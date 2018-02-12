@@ -1,6 +1,7 @@
 
-package com.feuerwehr.task;
+package kom.feuerwehr.task;
 
+import java.awt.event.ItemEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -13,87 +14,87 @@ public class ReadExcel {
    private String inputFile;
 
    // Sammelplatz
-   public String[] sammelplatzKoordinaten = new String[ 2 ];
-   public String[] sammelplatz = new String[ 2 ];
+   private String[] sammelplatzKoordinaten = new String[ 2 ];
+   private String[] sammelplatz = new String[ 2 ];
    // Melbeck
-   public String[] koordinaten184710 = new String[ 7 ];
-   public String[] bemerkung184710 = new String[ 7 ];
-   public String[] fragen184710 = new String[ 7 ];
-   public String[] antworten184710 = new String[ 7 ];
-   public String[] koordinaten184410 = new String[ 7 ];
-   public String[] bemerkung184410 = new String[ 7 ];
-   public String[] fragen184410 = new String[ 7 ];
-   public String[] antworten184410 = new String[ 7 ];
-   public String[] koordinaten184310 = new String[ 7 ];
-   public String[] bemerkung184310 = new String[ 7 ];
-   public String[] fragen184310 = new String[ 7 ];
-   public String[] antworten184310 = new String[ 7 ];
-   public String[] koordinaten181710 = new String[ 7 ];
-   public String[] bemerkung181710 = new String[ 7 ];
-   public String[] fragen181710 = new String[ 7 ];
-   public String[] antworten181710 = new String[ 7 ];
+   private String[] koordinaten184710 = new String[ 7 ];
+   private String[] bemerkung184710 = new String[ 7 ];
+   private String[] fragen184710 = new String[ 7 ];
+   private String[] antworten184710 = new String[ 7 ];
+   private String[] koordinaten184410 = new String[ 7 ];
+   private String[] bemerkung184410 = new String[ 7 ];
+   private String[] fragen184410 = new String[ 7 ];
+   private String[] antworten184410 = new String[ 7 ];
+   private String[] koordinaten184310 = new String[ 7 ];
+   private String[] bemerkung184310 = new String[ 7 ];
+   private String[] fragen184310 = new String[ 7 ];
+   private String[] antworten184310 = new String[ 7 ];
+   private String[] koordinaten181710 = new String[ 7 ];
+   private String[] bemerkung181710 = new String[ 7 ];
+   private String[] fragen181710 = new String[ 7 ];
+   private String[] antworten181710 = new String[ 7 ];
 
    // Deutsch Evern
-   public String[] koordinaten181720 = new String[ 7 ];
-   public String[] bemerkung181720 = new String[ 7 ];
-   public String[] fragen181720 = new String[ 7 ];
-   public String[] antworten181720 = new String[ 7 ];
-   public String[] koordinaten182420 = new String[ 7 ];
-   public String[] bemerkung182420 = new String[ 7 ];
-   public String[] fragen182420 = new String[ 7 ];
-   public String[] antworten182420 = new String[ 7 ];
-   public String[] koordinaten184320 = new String[ 7 ];
-   public String[] bemerkung184320 = new String[ 7 ];
-   public String[] fragen184320 = new String[ 7 ];
-   public String[] antworten184320 = new String[ 7 ];
+   private String[] koordinaten181720 = new String[ 7 ];
+   private String[] bemerkung181720 = new String[ 7 ];
+   private String[] fragen181720 = new String[ 7 ];
+   private String[] antworten181720 = new String[ 7 ];
+   private String[] koordinaten182420 = new String[ 7 ];
+   private String[] bemerkung182420 = new String[ 7 ];
+   private String[] fragen182420 = new String[ 7 ];
+   private String[] antworten182420 = new String[ 7 ];
+   private String[] koordinaten184320 = new String[ 7 ];
+   private String[] bemerkung184320 = new String[ 7 ];
+   private String[] fragen184320 = new String[ 7 ];
+   private String[] antworten184320 = new String[ 7 ];
 
    // Embsen
-   public String[] koordinaten181730 = new String[ 7 ];
-   public String[] bemerkung181730 = new String[ 7 ];
-   public String[] fragen181730 = new String[ 7 ];
-   public String[] antworten181730 = new String[ 7 ];
-   public String[] koordinaten185130 = new String[ 7 ];
-   public String[] bemerkung185130 = new String[ 7 ];
-   public String[] fragen185130 = new String[ 7 ];
-   public String[] antworten185130 = new String[ 7 ];
-   public String[] koordinaten184730 = new String[ 7 ];
-   public String[] bemerkung184730 = new String[ 7 ];
-   public String[] fragen184730 = new String[ 7 ];
-   public String[] antworten184730 = new String[ 7 ];
+   private String[] koordinaten181730 = new String[ 7 ];
+   private String[] bemerkung181730 = new String[ 7 ];
+   private String[] fragen181730 = new String[ 7 ];
+   private String[] antworten181730 = new String[ 7 ];
+   private String[] koordinaten185130 = new String[ 7 ];
+   private String[] bemerkung185130 = new String[ 7 ];
+   private String[] fragen185130 = new String[ 7 ];
+   private String[] antworten185130 = new String[ 7 ];
+   private String[] koordinaten184730 = new String[ 7 ];
+   private String[] bemerkung184730 = new String[ 7 ];
+   private String[] fragen184730 = new String[ 7 ];
+   private String[] antworten184730 = new String[ 7 ];
 
    // Oerzen
-   public String[] koordinaten181732 = new String[ 7 ];
-   public String[] bemerkung181732 = new String[ 7 ];
-   public String[] fragen181732 = new String[ 7 ];
-   public String[] antworten181732 = new String[ 7 ];
-   public String[] koordinaten184032 = new String[ 7 ];
-   public String[] bemerkung184032 = new String[ 7 ];
-   public String[] fragen184032 = new String[ 7 ];
-   public String[] antworten184032 = new String[ 7 ];
-   public String[] koordinaten184732 = new String[ 7 ];
-   public String[] bemerkung184732 = new String[ 7 ];
-   public String[] fragen184732 = new String[ 7 ];
-   public String[] antworten184732 = new String[ 7 ];
+   private String[] koordinaten181732 = new String[ 7 ];
+   private String[] bemerkung181732 = new String[ 7 ];
+   private String[] fragen181732 = new String[ 7 ];
+   private String[] antworten181732 = new String[ 7 ];
+   private String[] koordinaten184032 = new String[ 7 ];
+   private String[] bemerkung184032 = new String[ 7 ];
+   private String[] fragen184032 = new String[ 7 ];
+   private String[] antworten184032 = new String[ 7 ];
+   private String[] koordinaten184732 = new String[ 7 ];
+   private String[] bemerkung184732 = new String[ 7 ];
+   private String[] fragen184732 = new String[ 7 ];
+   private String[] antworten184732 = new String[ 7 ];
 
    // Barnstedt
-   public String[] koordinaten181740 = new String[ 7 ];
-   public String[] bemerkung181740 = new String[ 7 ];
-   public String[] fragen181740 = new String[ 7 ];
-   public String[] antworten181740 = new String[ 7 ];
-   public String[] koordinaten184040 = new String[ 7 ];
-   public String[] bemerkung184040 = new String[ 7 ];
-   public String[] fragen184040 = new String[ 7 ];
-   public String[] antworten184040 = new String[ 7 ];
-   public String[] koordinaten184740 = new String[ 7 ];
-   public String[] bemerkung184740 = new String[ 7 ];
-   public String[] fragen184740 = new String[ 7 ];
-   public String[] antworten184740 = new String[ 7 ];
+   private String[] koordinaten181740 = new String[ 7 ];
+   private String[] bemerkung181740 = new String[ 7 ];
+   private String[] fragen181740 = new String[ 7 ];
+   private String[] antworten181740 = new String[ 7 ];
+   private String[] koordinaten184040 = new String[ 7 ];
+   private String[] bemerkung184040 = new String[ 7 ];
+   private String[] fragen184040 = new String[ 7 ];
+   private String[] antworten184040 = new String[ 7 ];
+   private String[] koordinaten184740 = new String[ 7 ];
+   private String[] bemerkung184740 = new String[ 7 ];
+   private String[] fragen184740 = new String[ 7 ];
+   private String[] antworten184740 = new String[ 7 ];
 
    // Kolkhagen
-   public String[] koordinaten184342 = new String[ 7 ];
-   public String[] bemerkung184342 = new String[ 7 ];
-   public String[] fragen184342 = new String[ 7 ];
-   public String[] antworten184342 = new String[ 7 ];
+   private String[] koordinaten184342 = new String[ 7 ];
+   private String[] bemerkung184342 = new String[ 7 ];
+   private String[] fragen184342 = new String[ 7 ];
+   private String[] antworten184342 = new String[ 7 ];
 
    public void setInputFile( String inputFile ) {
       this.inputFile = inputFile;
@@ -838,4 +839,205 @@ public class ReadExcel {
    public String[] getBemerkung184342( ) {
       return bemerkung184342;
    }
+   
+   public String[] getKoordinaten(String rufname) {
+      switch( rufname ) {
+      // Barnstedt
+         case "18-47-40":
+            return koordinaten184740;
+         case "18-40-40":
+            return koordinaten184040;
+         case "18-17-40":
+            return koordinaten181740;
+         // Deutsch Evern
+         case "18-24-20":
+            return koordinaten182420;
+         case "18-43-20":
+            return koordinaten184320;
+         case "18-17-20":
+            return koordinaten181720;
+         // Embsen
+         case "18-51-30":
+            return koordinaten185130;
+         case "18-47-30":
+            return koordinaten184730;
+         case "18-17-30":
+            return koordinaten181730;
+         // Kolkhagen
+         case "18-43-42":
+            return koordinaten184342;
+         // Melbeck
+         case "18-17-10":
+            return koordinaten181710;
+         case "18-43-10":
+            return koordinaten184310;
+         case "18-44-10":
+            return koordinaten184410;
+         case "18-47-10":
+            return koordinaten184710;
+         // Oerzen
+         case "18-40-32":
+            return koordinaten184032;
+         case "18-47-32":
+            return koordinaten184732;
+         case "18-17-32":
+            return koordinaten181732;
+         default:
+            System.out.println( "Something going wrong!" );
+            break;
+            
+      }
+      return null;
+   }
+   
+   public String[] getBemerkung(String rufname) {
+      switch( rufname ) {
+      // Barnstedt
+         case "18-47-40":
+            return bemerkung184740;
+         case "18-40-40":
+            return bemerkung184040;
+         case "18-17-40":
+            return bemerkung181740;
+         // Deutsch Evern
+         case "18-24-20":
+            return bemerkung182420;
+         case "18-43-20":
+            return bemerkung184320;
+         case "18-17-20":
+            return bemerkung181720;
+         // Embsen
+         case "18-51-30":
+            return bemerkung185130;
+         case "18-47-30":
+            return bemerkung184730;
+         case "18-17-30":
+            return bemerkung181730;
+         // Kolkhagen
+         case "18-43-42":
+            return bemerkung184342;
+         // Melbeck
+         case "18-17-10":
+            return bemerkung181710;
+         case "18-43-10":
+            return bemerkung184310;
+         case "18-44-10":
+            return bemerkung184410;
+         case "18-47-10":
+            return bemerkung184710;
+         // Oerzen
+         case "18-40-32":
+            return bemerkung184032;
+         case "18-47-32":
+            return bemerkung184732;
+         case "18-17-32":
+            return bemerkung181732;
+         default:
+            System.out.println( "Something going wrong!" );
+            break;
+            
+      }
+      return null;
+   }
+   
+   public String[] getFragen(String rufname) {
+      switch( rufname ) {
+      // Barnstedt
+         case "18-47-40":
+            return fragen184740;
+         case "18-40-40":
+            return fragen184040;
+         case "18-17-40":
+            return fragen181740;
+         // Deutsch Evern
+         case "18-24-20":
+            return fragen182420;
+         case "18-43-20":
+            return fragen184320;
+         case "18-17-20":
+            return fragen181720;
+         // Embsen
+         case "18-51-30":
+            return fragen185130;
+         case "18-47-30":
+            return fragen184730;
+         case "18-17-30":
+            return fragen181730;
+         // Kolkhagen
+         case "18-43-42":
+            return fragen184342;
+         // Melbeck
+         case "18-17-10":
+            return fragen181710;
+         case "18-43-10":
+            return fragen184310;
+         case "18-44-10":
+            return fragen184410;
+         case "18-47-10":
+            return fragen184710;
+         // Oerzen
+         case "18-40-32":
+            return fragen184032;
+         case "18-47-32":
+            return fragen184732;
+         case "18-17-32":
+            return fragen181732;
+         default:
+            System.out.println( "Something going wrong!" );
+            break;
+            
+      }
+      return null;
+   }
+   
+   public String[] getAntworten(String rufname) {
+      switch( rufname ) {
+      // Barnstedt
+         case "18-47-40":
+            return antworten184740;
+         case "18-40-40":
+            return antworten184040;
+         case "18-17-40":
+            return antworten181740;
+         // Deutsch Evern
+         case "18-24-20":
+            return antworten182420;
+         case "18-43-20":
+            return antworten184320;
+         case "18-17-20":
+            return antworten181720;
+         // Embsen
+         case "18-51-30":
+            return antworten185130;
+         case "18-47-30":
+            return antworten184730;
+         case "18-17-30":
+            return antworten181730;
+         // Kolkhagen
+         case "18-43-42":
+            return antworten184342;
+         // Melbeck
+         case "18-17-10":
+            return antworten181710;
+         case "18-43-10":
+            return antworten184310;
+         case "18-44-10":
+            return antworten184410;
+         case "18-47-10":
+            return antworten184710;
+         // Oerzen
+         case "18-40-32":
+            return antworten184032;
+         case "18-47-32":
+            return antworten184732;
+         case "18-17-32":
+            return antworten181732;
+         default:
+            System.out.println( "Something going wrong!" );
+            break;
+            
+      }
+      return null;
+   }
+   
 }
