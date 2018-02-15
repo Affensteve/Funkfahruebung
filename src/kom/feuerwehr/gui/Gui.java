@@ -1,15 +1,16 @@
 
 package kom.feuerwehr.gui;
 
-import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -30,11 +31,14 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import kom.feuerwehr.gui.external.Switch;
 import kom.feuerwehr.gui.panels.BarnstedtPanel;
 import kom.feuerwehr.gui.panels.DeutschEvernPanel;
 import kom.feuerwehr.gui.panels.EmbsenPanel;
@@ -142,6 +146,9 @@ public class Gui extends JFrame implements ItemListener {
    private BarnstedtPanel barnstedtPanel;
    private KolkhagenPanel kolkhagenPanel;
 
+   private Switch btnSwitchConnection;
+   private JTextField textField;
+
    public Gui( ) {
       reader = new ReadExcel();
       reader.setInputFile( "Koordinaten/Koordinaten.xls" );
@@ -168,9 +175,20 @@ public class Gui extends JFrame implements ItemListener {
          e.printStackTrace();
       }
       vehiclePanel = new JPanel();
-      vehiclePanel.setLayout( new MigLayout( "wrap 6", "[grow][][][][][][][][][][][][][][][][][]", "[][][][][][][][][][][]" ) );
+      vehiclePanel.setLayout( new MigLayout( "wrap 6", "[115][115][115][115][115][115][]", "[][35][35][35][][][][][][][][][]" ) );
 
       setupPanel();
+
+      JPanel panel = new JPanel();
+
+      JLabel lblVerbunden = new JLabel( "verbunden:" );
+      panel.add( lblVerbunden );
+
+      btnSwitchConnection = new Switch();
+      btnSwitchConnection.setOnOff( false );
+      panel.add( btnSwitchConnection, new GridBagLayout() );
+      panel.setLayout( new MigLayout( "wrap 1" ) );
+      vehiclePanel.add( panel, "hidemode 3,cell 6 0,aligny top" );
 
       JPanel queuePanel = new JPanel();
       JPanel label = new JPanel();
@@ -181,11 +199,12 @@ public class Gui extends JFrame implements ItemListener {
       tlfMelbeckQueuePanel = new JPanel();
       tlfMelbeckQueuePanel.addMouseListener( mouseListener( tlfMelbeckQueuePanel ) );
       JLabel label_18 = new JLabel( "18-47-10" );
-      label_18.setFont( new Font( "Tahoma", Font.PLAIN, 14 ) );
+      label_18.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       tlfMelbeckQueuePanel.add( label_18 );
-      Button tlfMelbeckQueue = new Button();
+      JButton tlfMelbeckQueue = new JButton();
       tlfMelbeckQueue.addMouseListener( mouseListener( tlfMelbeckQueuePanel ) );
-      tlfMelbeckQueue.setForeground( Color.GRAY );
+      configureButtonForQueue( tlfMelbeckQueue );
+
       tlfMelbeckQueuePanel.add( tlfMelbeckQueue );
       label_1 = new JLabel();
       label_1.setFont( new Font( "Tahoma", Font.BOLD, 13 ) );
@@ -214,9 +233,10 @@ public class Gui extends JFrame implements ItemListener {
          }
       } );
       JLabel label_19 = new JLabel( "18-44-10" );
-      label_19.setFont( new Font( "Tahoma", Font.PLAIN, 14 ) );
+      label_19.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       lf16MelbeckQueuePanel.add( label_19 );
-      Button lf16MelbeckQueue = new Button();
+      JButton lf16MelbeckQueue = new JButton();
+      configureButtonForQueue( lf16MelbeckQueue );
       label_2 = new JLabel();
       label_2.setFont( new Font( "Tahoma", Font.BOLD, 13 ) );
       lf16MelbeckQueue.addActionListener( new ActionListener() {
@@ -240,9 +260,10 @@ public class Gui extends JFrame implements ItemListener {
          }
       } );
       JLabel label_20 = new JLabel( "18-43-10" );
-      label_20.setFont( new Font( "Tahoma", Font.PLAIN, 14 ) );
+      label_20.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       lf8MelbeckQueuePanel.add( label_20 );
-      Button lf8MelbeckQueue = new Button();
+      JButton lf8MelbeckQueue = new JButton();
+      configureButtonForQueue( lf8MelbeckQueue );
       label_3 = new JLabel();
       label_3.setFont( new Font( "Tahoma", Font.BOLD, 13 ) );
       lf8MelbeckQueue.addActionListener( new ActionListener() {
@@ -266,9 +287,10 @@ public class Gui extends JFrame implements ItemListener {
          }
       } );
       JLabel label_30 = new JLabel( "18-17-10" );
-      label_30.setFont( new Font( "Tahoma", Font.PLAIN, 14 ) );
+      label_30.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       mtwMelbeckQueuePanel.add( label_30 );
-      Button mtwMelbeckQueue = new Button();
+      JButton mtwMelbeckQueue = new JButton();
+      configureButtonForQueue( mtwMelbeckQueue );
       label_4 = new JLabel();
       label_4.setFont( new Font( "Tahoma", Font.BOLD, 13 ) );
       mtwMelbeckQueue.addActionListener( new ActionListener() {
@@ -292,9 +314,10 @@ public class Gui extends JFrame implements ItemListener {
          }
       } );
       JLabel label_31 = new JLabel( "18-43-20" );
-      label_31.setFont( new Font( "Tahoma", Font.PLAIN, 14 ) );
+      label_31.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       lf8DeutschEvernQueuePanel.add( label_31 );
-      Button lf8DeutschEvernQueue = new Button();
+      JButton lf8DeutschEvernQueue = new JButton();
+      configureButtonForQueue( lf8DeutschEvernQueue );
       label_5 = new JLabel();
       label_5.setFont( new Font( "Tahoma", Font.BOLD, 13 ) );
       lf8DeutschEvernQueue.addActionListener( new ActionListener() {
@@ -319,9 +342,10 @@ public class Gui extends JFrame implements ItemListener {
       } );
       tlfDeutschEvernQueuePanel.setMinimumSize( new Dimension( 40, 10 ) );
       JLabel label_21 = new JLabel( "18-24-20" );
-      label_21.setFont( new Font( "Tahoma", Font.PLAIN, 14 ) );
+      label_21.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       tlfDeutschEvernQueuePanel.add( label_21 );
-      Button tlfDeutschEvernQueue = new Button();
+      JButton tlfDeutschEvernQueue = new JButton();
+      configureButtonForQueue( tlfDeutschEvernQueue );
       label_6 = new JLabel();
       label_6.setFont( new Font( "Tahoma", Font.BOLD, 13 ) );
       tlfDeutschEvernQueue.addActionListener( new ActionListener() {
@@ -334,6 +358,7 @@ public class Gui extends JFrame implements ItemListener {
       tlfDeutschEvernQueuePanel.add( tlfDeutschEvernQueue );
       tlfDeutschEvernQueuePanel.add( label_6 );
       tlfDeutschEvernQueuePanel.setVisible( false );
+
       vehiclePanel.add( tlfDeutschEvernQueuePanel, "hidemode 3" );
 
       mtwDeutschEvernQueuePanel = new JPanel();
@@ -345,9 +370,10 @@ public class Gui extends JFrame implements ItemListener {
          }
       } );
       JLabel label_22 = new JLabel( "18-17-20" );
-      label_22.setFont( new Font( "Tahoma", Font.PLAIN, 14 ) );
+      label_22.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       mtwDeutschEvernQueuePanel.add( label_22 );
-      Button mtwDeutschEvernQueue = new Button();
+      JButton mtwDeutschEvernQueue = new JButton();
+      configureButtonForQueue( mtwDeutschEvernQueue );
       label_7 = new JLabel();
       label_7.setFont( new Font( "Tahoma", Font.BOLD, 13 ) );
       mtwDeutschEvernQueue.addActionListener( new ActionListener() {
@@ -371,9 +397,10 @@ public class Gui extends JFrame implements ItemListener {
          }
       } );
       JLabel label_23 = new JLabel( "18-51-30" );
-      label_23.setFont( new Font( "Tahoma", Font.PLAIN, 14 ) );
+      label_23.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       rw1EmbsenQueuePanel.add( label_23 );
-      Button rw1EmbsenQueue = new Button();
+      JButton rw1EmbsenQueue = new JButton();
+      configureButtonForQueue( rw1EmbsenQueue );
       label_8 = new JLabel();
       label_8.setFont( new Font( "Tahoma", Font.BOLD, 13 ) );
       rw1EmbsenQueue.addActionListener( new ActionListener() {
@@ -397,9 +424,10 @@ public class Gui extends JFrame implements ItemListener {
          }
       } );
       JLabel label_24 = new JLabel( "18-47-30" );
-      label_24.setFont( new Font( "Tahoma", Font.PLAIN, 14 ) );
+      label_24.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       lfEmbsenQueuePanel.add( label_24 );
-      Button tlfEmbsenQueue = new Button();
+      JButton tlfEmbsenQueue = new JButton();
+      configureButtonForQueue( tlfEmbsenQueue );
       label_9 = new JLabel();
       label_9.setFont( new Font( "Tahoma", Font.BOLD, 13 ) );
       tlfEmbsenQueue.addActionListener( new ActionListener() {
@@ -423,9 +451,10 @@ public class Gui extends JFrame implements ItemListener {
          }
       } );
       JLabel label_32 = new JLabel( "18-17-30" );
-      label_32.setFont( new Font( "Tahoma", Font.PLAIN, 14 ) );
+      label_32.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       mtwEmbsenQueuePanel.add( label_32 );
-      Button mtwEmbsenQueue = new Button();
+      JButton mtwEmbsenQueue = new JButton();
+      configureButtonForQueue( mtwEmbsenQueue );
       label_10 = new JLabel();
       label_10.setFont( new Font( "Tahoma", Font.BOLD, 13 ) );
       mtwEmbsenQueue.addActionListener( new ActionListener() {
@@ -449,9 +478,10 @@ public class Gui extends JFrame implements ItemListener {
          }
       } );
       JLabel label_33 = new JLabel( "18-47-32" );
-      label_33.setFont( new Font( "Tahoma", Font.PLAIN, 14 ) );
+      label_33.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       tlfOerzenQueuePanel.add( label_33 );
-      Button tlfOerzenQueue = new Button();
+      JButton tlfOerzenQueue = new JButton();
+      configureButtonForQueue( tlfOerzenQueue );
       label_11 = new JLabel();
       label_11.setFont( new Font( "Tahoma", Font.BOLD, 13 ) );
       tlfOerzenQueue.addActionListener( new ActionListener() {
@@ -476,9 +506,10 @@ public class Gui extends JFrame implements ItemListener {
          }
       } );
       JLabel label_25 = new JLabel( "18-40-32" );
-      label_25.setFont( new Font( "Tahoma", Font.PLAIN, 14 ) );
+      label_25.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       tsfOerzenQueuePanel.add( label_25 );
-      Button tsfOerzenQueue = new Button();
+      JButton tsfOerzenQueue = new JButton();
+      configureButtonForQueue( tsfOerzenQueue );
       label_12 = new JLabel();
       label_12.setFont( new Font( "Tahoma", Font.BOLD, 13 ) );
       tsfOerzenQueue.addActionListener( new ActionListener() {
@@ -502,9 +533,10 @@ public class Gui extends JFrame implements ItemListener {
          }
       } );
       JLabel label_26 = new JLabel( "18-17-32" );
-      label_26.setFont( new Font( "Tahoma", Font.PLAIN, 14 ) );
+      label_26.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       mtwOerzenQueuePanel.add( label_26 );
-      Button mtwOerzenQueue = new Button();
+      JButton mtwOerzenQueue = new JButton();
+      configureButtonForQueue( mtwOerzenQueue );
       label_13 = new JLabel();
       label_13.setFont( new Font( "Tahoma", Font.BOLD, 13 ) );
       mtwOerzenQueue.addActionListener( new ActionListener() {
@@ -528,9 +560,10 @@ public class Gui extends JFrame implements ItemListener {
          }
       } );
       JLabel label_27 = new JLabel( "18-47-40" );
-      label_27.setFont( new Font( "Tahoma", Font.PLAIN, 14 ) );
+      label_27.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       tlfBarnstedtQueuePanel.add( label_27 );
-      Button tlfBarnstedtQueue = new Button();
+      JButton tlfBarnstedtQueue = new JButton();
+      configureButtonForQueue( tlfBarnstedtQueue );
       label_14 = new JLabel();
       label_14.setFont( new Font( "Tahoma", Font.BOLD, 13 ) );
       tlfBarnstedtQueue.addActionListener( new ActionListener() {
@@ -554,9 +587,10 @@ public class Gui extends JFrame implements ItemListener {
          }
       } );
       JLabel label_28 = new JLabel( "18-40-40" );
-      label_28.setFont( new Font( "Tahoma", Font.PLAIN, 14 ) );
+      label_28.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       tsfBarnstedtQueuePanel.add( label_28 );
-      Button tsfBarnstedtQueue = new Button();
+      JButton tsfBarnstedtQueue = new JButton();
+      configureButtonForQueue( tsfBarnstedtQueue );
       label_15 = new JLabel();
       label_15.setFont( new Font( "Tahoma", Font.BOLD, 13 ) );
       tsfBarnstedtQueue.addActionListener( new ActionListener() {
@@ -580,9 +614,10 @@ public class Gui extends JFrame implements ItemListener {
          }
       } );
       JLabel label_29 = new JLabel( "18-17-40" );
-      label_29.setFont( new Font( "Tahoma", Font.PLAIN, 14 ) );
+      label_29.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       mtwBarnstedtQueuePanel.add( label_29 );
-      Button mtwBarnstedtQueue = new Button();
+      JButton mtwBarnstedtQueue = new JButton();
+      configureButtonForQueue( mtwBarnstedtQueue );
       label_16 = new JLabel();
       label_16.setFont( new Font( "Tahoma", Font.BOLD, 13 ) );
       mtwBarnstedtQueue.addActionListener( new ActionListener() {
@@ -599,9 +634,10 @@ public class Gui extends JFrame implements ItemListener {
 
       lf8KolkhagenQueuePanel = new JPanel();
       JLabel label_34 = new JLabel( "18-43-42" );
-      label_34.setFont( new Font( "Tahoma", Font.PLAIN, 14 ) );
+      label_34.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       lf8KolkhagenQueuePanel.add( label_34 );
-      Button lf8KolkhagenQueue = new Button();
+      JButton lf8KolkhagenQueue = new JButton();
+      configureButtonForQueue( lf8KolkhagenQueue );
       label_17 = new JLabel();
       label_17.setFont( new Font( "Tahoma", Font.BOLD, 13 ) );
       lf8KolkhagenQueue.addActionListener( new ActionListener() {
@@ -626,10 +662,9 @@ public class Gui extends JFrame implements ItemListener {
       final JFrame frame = new JFrame( "Funkfahrübung by ©S.Kunz" );
       frame.setResizable( false );
       frame.setAlwaysOnTop( true );
-      frame.getContentPane().add( vehiclePanel, BorderLayout.WEST );
 
       JLabel colorImage = new JLabel( new ImageIcon( "res/gradient.png" ) );
-      vehiclePanel.add( colorImage, "hidemode 3, cell 0 5, span" );
+      vehiclePanel.add( colorImage, "hidemode 3,cell 0 5 18 1" );
 
       JPanel carPanel = new JPanel();
       JPanel auto = new JPanel();
@@ -738,6 +773,26 @@ public class Gui extends JFrame implements ItemListener {
       editVehiclesMenuItem.setEnabled( false );
       mainMenu.add( editVehiclesMenuItem );
 
+      JMenuItem editQuestionsMenuItem = new JMenuItem( "Fragen bearbeiten" );
+      editQuestionsMenuItem.addActionListener( new ActionListener() {
+         @Override
+         public void actionPerformed( ActionEvent arg0 ) {
+            // TODO
+         }
+      } );
+      editQuestionsMenuItem.setEnabled( false );
+      mainMenu.add( editQuestionsMenuItem );
+
+      JMenuItem editFFU = new JMenuItem( "Übung planen" );
+      editFFU.addActionListener( new ActionListener() {
+         @Override
+         public void actionPerformed( ActionEvent arg0 ) {
+            // TODO
+         }
+      } );
+      editFFU.setEnabled( false );
+      mainMenu.add( editFFU );
+
       JMenuItem exitMenuItem = new JMenuItem( "Beenden" );
       exitMenuItem.addActionListener( new ActionListener() {
          @Override
@@ -830,9 +885,74 @@ public class Gui extends JFrame implements ItemListener {
       helpMenu.add( aboutMenuItem );
       menuBar.add( helpMenu );
       frame.setJMenuBar( menuBar );
-      frame.setSize( 800, 800 );
+
+      JPanel helpPanel = new JPanel();
+      helpPanel.setLayout( new MigLayout( "wrap 1", "[grow]", "[][][][]" ) );
+
+      JSplitPane splitPane = new JSplitPane( JSplitPane.HORIZONTAL_SPLIT, vehiclePanel, helpPanel );
+
+      JLabel label_35 = new JLabel( "18-11-30" );
+      label_35.setFont( new Font( "Tahoma", Font.PLAIN, 28 ) );
+      helpPanel.add( label_35, "cell 0 0" );
+
+      JLabel lblBosFunkalphabet = new JLabel( "BOS Funk-Alphabet" );
+      helpPanel.add( lblBosFunkalphabet, "cell 0 1" );
+      final JLabel label_36 = new JLabel( "" );
+      label_36.setFont(new Font("Tahoma", Font.PLAIN, 18));
+      helpPanel.add( label_36, "cell 0 3" );
+
+      textField = new JTextField();
+      textField.addKeyListener( new KeyListener() {
+
+         @Override
+         public void keyTyped( KeyEvent e ) {
+            // TODO Auto-generated method stub
+
+         }
+
+         @Override
+         public void keyReleased( KeyEvent e ) {
+            System.out.println( textField.getText() );
+            String[] split = textField.getText().split( "" );
+            String stringbuilder = "<html>";
+            for( int i = 0; i < split.length; i++ ) {
+               switch( split[ i ] ) {
+                  case "a":
+                     stringbuilder = stringbuilder + "<b>A</b>nton <br>";
+                     break;
+                  case "b":
+                     stringbuilder = stringbuilder + "<b>B</b>erta <br>";
+                     break;
+                  default:
+                     break;
+               }
+            }
+            stringbuilder = stringbuilder + "</html>";
+            label_36.setText( stringbuilder );
+
+         }
+
+         @Override
+         public void keyPressed( KeyEvent e ) {
+         }
+      } );
+
+      helpPanel.add( textField, "cell 0 2,growx" );
+
+      frame.getContentPane().add( splitPane );
+      splitPane.setContinuousLayout( true );
+
+      frame.setSize( 1100, 800 );
       frame.setVisible( true );
       frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+   }
+
+   private void configureButtonForQueue( JButton button ) {
+      button.setOpaque( false );
+      button.setContentAreaFilled( false );
+      button.setFocusable( false );
+      button.setBorderPainted( false );
+      button.setSize( new Dimension( 15, 35 ) );
    }
 
    private MouseAdapter mouseListener( final JPanel panel ) {
@@ -1355,7 +1475,7 @@ public class Gui extends JFrame implements ItemListener {
     * 
     * @param ipAdress
     */
-   public void setIPAdresse( String ipAdress ) { 
+   public void setIPAdresse( String ipAdress ) {
       if( ipAdress.equals( "" ) ) {
          offlineArbeiten = true;
       }
@@ -1372,5 +1492,6 @@ public class Gui extends JFrame implements ItemListener {
             System.out.println( "IOException bei Verbindung zu Host 'localhost', Port 13000: " + ex.getMessage() );
          }
       }
+      btnSwitchConnection.setOnOff( !offlineArbeiten );
    }
 }
