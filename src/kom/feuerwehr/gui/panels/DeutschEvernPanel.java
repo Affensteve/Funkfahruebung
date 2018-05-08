@@ -22,7 +22,7 @@ public class DeutschEvernPanel {
       deutschEvernPanel.setLayout( new MigLayout( "wrap 1" ) );
       deutschEvernPanel.add( new JLabel( "Deutsch Evern" ) );
       deutschEvernPanel.add( new JLabel( new ImageIcon( "res/Wappen_Deutsch_Evern.png" ) ) );
-      Checkbox lf8DE = new Checkbox( "18-43-20" );
+      Checkbox lf8DE = new Checkbox( "18-45-20" );
       lf8DE.addItemListener( listener );
       deutschEvernPanel.add( lf8DE );
       Checkbox tlfDE = new Checkbox( "18-24-20" );

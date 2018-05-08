@@ -43,10 +43,10 @@ public class ReadExcel {
    private String[] bemerkung182420 = new String[ 7 ];
    private String[] fragen182420 = new String[ 7 ];
    private String[] antworten182420 = new String[ 7 ];
-   private String[] koordinaten184320 = new String[ 7 ];
-   private String[] bemerkung184320 = new String[ 7 ];
-   private String[] fragen184320 = new String[ 7 ];
-   private String[] antworten184320 = new String[ 7 ];
+   private String[] koordinaten184520 = new String[ 7 ];
+   private String[] bemerkung184520 = new String[ 7 ];
+   private String[] fragen184520 = new String[ 7 ];
+   private String[] antworten184520 = new String[ 7 ];
 
    // Embsen
    private String[] koordinaten181730 = new String[ 7 ];
@@ -228,27 +228,27 @@ public class ReadExcel {
                   }
                }
             }
-            else if( shit[ index ].equals( "18-43-20" ) ) {
+            else if( shit[ index ].equals( "18-45-20" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten184320[ i ] = cell.getContents();
+                        koordinaten184520[ i ] = cell.getContents();
                      }
                      else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung184320[ i ] = cell.getContents();
+                        bemerkung184520[ i ] = cell.getContents();
                      }
                      else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen184320[ i ] = cell.getContents();
+                        fragen184520[ i ] = cell.getContents();
                      }
                      else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten184320[ i ] = cell.getContents();
+                        antworten184520[ i ] = cell.getContents();
                      }
                   }
                }
@@ -632,16 +632,16 @@ public class ReadExcel {
       return antworten182420;
    }
 
-   public String[] getKoordinaten184320( ) {
-      return koordinaten184320;
+   public String[] getKoordinaten184520( ) {
+      return koordinaten184520;
    }
 
-   public String[] getFragen184320( ) {
-      return fragen184320;
+   public String[] getFragen184520( ) {
+      return fragen184520;
    }
 
-   public String[] getAntworten184320( ) {
-      return antworten184320;
+   public String[] getAntworten184520( ) {
+      return antworten184520;
    }
 
    public String[] getKoordinaten181730( ) {
@@ -796,8 +796,8 @@ public class ReadExcel {
       return bemerkung182420;
    }
 
-   public String[] getBemerkung184320( ) {
-      return bemerkung184320;
+   public String[] getBemerkung184520( ) {
+      return bemerkung184520;
    }
 
    public String[] getBemerkung181730( ) {
@@ -852,8 +852,8 @@ public class ReadExcel {
          // Deutsch Evern
          case "18-24-20":
             return koordinaten182420;
-         case "18-43-20":
-            return koordinaten184320;
+         case "18-45-20":
+            return koordinaten184520;
          case "18-17-20":
             return koordinaten181720;
          // Embsen
@@ -902,8 +902,8 @@ public class ReadExcel {
          // Deutsch Evern
          case "18-24-20":
             return bemerkung182420;
-         case "18-43-20":
-            return bemerkung184320;
+         case "18-45-20":
+            return bemerkung184520;
          case "18-17-20":
             return bemerkung181720;
          // Embsen
@@ -952,8 +952,8 @@ public class ReadExcel {
          // Deutsch Evern
          case "18-24-20":
             return fragen182420;
-         case "18-43-20":
-            return fragen184320;
+         case "18-45-20":
+            return fragen184520;
          case "18-17-20":
             return fragen181720;
          // Embsen
@@ -1002,8 +1002,8 @@ public class ReadExcel {
          // Deutsch Evern
          case "18-24-20":
             return antworten182420;
-         case "18-43-20":
-            return antworten184320;
+         case "18-45-20":
+            return antworten184520;
          case "18-17-20":
             return antworten181720;
          // Embsen
