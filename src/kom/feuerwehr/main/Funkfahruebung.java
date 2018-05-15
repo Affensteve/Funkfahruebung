@@ -1,7 +1,5 @@
 package kom.feuerwehr.main;
 
-import javax.swing.JOptionPane;
-
 import kom.feuerwehr.gui.Gui;
 
 public class Funkfahruebung {
@@ -10,3 +8,4 @@ public class Funkfahruebung {
 		Gui gui = new Gui();
 	}
 }
+	

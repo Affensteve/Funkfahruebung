@@ -506,7 +506,7 @@ public class Gui extends JFrame implements ItemListener {
 			}
 		});
 		editVehiclesMenuItem.setEnabled(false);
-		mainMenu.add(editVehiclesMenuItem);
+		// mainMenu.add(editVehiclesMenuItem);
 
 		JMenuItem editQuestionsMenuItem = new JMenuItem("Fragen bearbeiten");
 		editQuestionsMenuItem.addActionListener(new ActionListener() {
@@ -516,7 +516,7 @@ public class Gui extends JFrame implements ItemListener {
 			}
 		});
 		editQuestionsMenuItem.setEnabled(false);
-		mainMenu.add(editQuestionsMenuItem);
+		// mainMenu.add(editQuestionsMenuItem);
 
 		JMenuItem editFFU = new JMenuItem("Übung planen");
 		editFFU.addActionListener(new ActionListener() {
@@ -526,7 +526,7 @@ public class Gui extends JFrame implements ItemListener {
 			}
 		});
 		editFFU.setEnabled(false);
-		mainMenu.add(editFFU);
+		// mainMenu.add(editFFU);
 
 		JMenuItem editRufname = new JMenuItem("Rufnamen editieren");
 		editRufname.addActionListener(new ActionListener() {
