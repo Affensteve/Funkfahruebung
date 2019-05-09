@@ -1,100 +1,110 @@
 
 package kom.feuerwehr.task;
 
-import java.awt.event.ItemEvent;
-import java.io.File;
-import java.io.IOException;
-
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 
+import java.io.File;
+import java.io.IOException;
+
 public class ReadExcel {
    private String inputFile;
 
    // Sammelplatz
-   private String[] sammelplatzKoordinaten = new String[ 2 ];
-   private String[] sammelplatz = new String[ 2 ];
+   private String[] sammelplatzKoordinaten = new String[2];
+   private String[] sammelplatz = new String[2];
    // Melbeck
-   private String[] koordinaten184710 = new String[ 7 ];
-   private String[] bemerkung184710 = new String[ 7 ];
-   private String[] fragen184710 = new String[ 7 ];
-   private String[] antworten184710 = new String[ 7 ];
-   private String[] koordinaten184410 = new String[ 7 ];
-   private String[] bemerkung184410 = new String[ 7 ];
-   private String[] fragen184410 = new String[ 7 ];
-   private String[] antworten184410 = new String[ 7 ];
-   private String[] koordinaten184310 = new String[ 7 ];
-   private String[] bemerkung184310 = new String[ 7 ];
-   private String[] fragen184310 = new String[ 7 ];
-   private String[] antworten184310 = new String[ 7 ];
-   private String[] koordinaten181710 = new String[ 7 ];
-   private String[] bemerkung181710 = new String[ 7 ];
-   private String[] fragen181710 = new String[ 7 ];
-   private String[] antworten181710 = new String[ 7 ];
+   private String[] koordinaten184710 = new String[7];
+   private String[] bemerkung184710 = new String[7];
+   private String[] fragen184710 = new String[7];
+   private String[] antworten184710 = new String[7];
+   private String[] koordinaten184410 = new String[7];
+   private String[] bemerkung184410 = new String[7];
+   private String[] fragen184410 = new String[7];
+   private String[] antworten184410 = new String[7];
+   private String[] koordinaten184310 = new String[7];
+   private String[] bemerkung184310 = new String[7];
+   private String[] fragen184310 = new String[7];
+   private String[] antworten184310 = new String[7];
+   private String[] koordinaten181710 = new String[7];
+   private String[] bemerkung181710 = new String[7];
+   private String[] fragen181710 = new String[7];
+   private String[] antworten181710 = new String[7];
 
    // Deutsch Evern
-   private String[] koordinaten181720 = new String[ 7 ];
-   private String[] bemerkung181720 = new String[ 7 ];
-   private String[] fragen181720 = new String[ 7 ];
-   private String[] antworten181720 = new String[ 7 ];
-   private String[] koordinaten182420 = new String[ 7 ];
-   private String[] bemerkung182420 = new String[ 7 ];
-   private String[] fragen182420 = new String[ 7 ];
-   private String[] antworten182420 = new String[ 7 ];
-   private String[] koordinaten184520 = new String[ 7 ];
-   private String[] bemerkung184520 = new String[ 7 ];
-   private String[] fragen184520 = new String[ 7 ];
-   private String[] antworten184520 = new String[ 7 ];
+   private String[] koordinaten181720 = new String[7];
+   private String[] bemerkung181720 = new String[7];
+   private String[] fragen181720 = new String[7];
+   private String[] antworten181720 = new String[7];
+   private String[] koordinaten182420 = new String[7];
+   private String[] bemerkung182420 = new String[7];
+   private String[] fragen182420 = new String[7];
+   private String[] antworten182420 = new String[7];
+   private String[] koordinaten184520 = new String[7];
+   private String[] bemerkung184520 = new String[7];
+   private String[] fragen184520 = new String[7];
+   private String[] antworten184520 = new String[7];
 
    // Embsen
-   private String[] koordinaten181730 = new String[ 7 ];
-   private String[] bemerkung181730 = new String[ 7 ];
-   private String[] fragen181730 = new String[ 7 ];
-   private String[] antworten181730 = new String[ 7 ];
-   private String[] koordinaten185130 = new String[ 7 ];
-   private String[] bemerkung185130 = new String[ 7 ];
-   private String[] fragen185130 = new String[ 7 ];
-   private String[] antworten185130 = new String[ 7 ];
-   private String[] koordinaten184730 = new String[ 7 ];
-   private String[] bemerkung184730 = new String[ 7 ];
-   private String[] fragen184730 = new String[ 7 ];
-   private String[] antworten184730 = new String[ 7 ];
+   private String[] koordinaten181730 = new String[7];
+   private String[] bemerkung181730 = new String[7];
+   private String[] fragen181730 = new String[7];
+   private String[] antworten181730 = new String[7];
+   private String[] koordinaten185130 = new String[7];
+   private String[] bemerkung185130 = new String[7];
+   private String[] fragen185130 = new String[7];
+   private String[] antworten185130 = new String[7];
+   private String[] koordinaten184730 = new String[7];
+   private String[] bemerkung184730 = new String[7];
+   private String[] fragen184730 = new String[7];
+   private String[] antworten184730 = new String[7];
 
    // Oerzen
-   private String[] koordinaten181732 = new String[ 7 ];
-   private String[] bemerkung181732 = new String[ 7 ];
-   private String[] fragen181732 = new String[ 7 ];
-   private String[] antworten181732 = new String[ 7 ];
-   private String[] koordinaten184032 = new String[ 7 ];
-   private String[] bemerkung184032 = new String[ 7 ];
-   private String[] fragen184032 = new String[ 7 ];
-   private String[] antworten184032 = new String[ 7 ];
-   private String[] koordinaten184732 = new String[ 7 ];
-   private String[] bemerkung184732 = new String[ 7 ];
-   private String[] fragen184732 = new String[ 7 ];
-   private String[] antworten184732 = new String[ 7 ];
+   private String[] koordinaten181732 = new String[7];
+   private String[] bemerkung181732 = new String[7];
+   private String[] fragen181732 = new String[7];
+   private String[] antworten181732 = new String[7];
+   private String[] koordinaten184032 = new String[7];
+   private String[] bemerkung184032 = new String[7];
+   private String[] fragen184032 = new String[7];
+   private String[] antworten184032 = new String[7];
+   private String[] koordinaten184732 = new String[7];
+   private String[] bemerkung184732 = new String[7];
+   private String[] fragen184732 = new String[7];
+   private String[] antworten184732 = new String[7];
 
    // Barnstedt
-   private String[] koordinaten181740 = new String[ 7 ];
-   private String[] bemerkung181740 = new String[ 7 ];
-   private String[] fragen181740 = new String[ 7 ];
-   private String[] antworten181740 = new String[ 7 ];
-   private String[] koordinaten184040 = new String[ 7 ];
-   private String[] bemerkung184040 = new String[ 7 ];
-   private String[] fragen184040 = new String[ 7 ];
-   private String[] antworten184040 = new String[ 7 ];
-   private String[] koordinaten184740 = new String[ 7 ];
-   private String[] bemerkung184740 = new String[ 7 ];
-   private String[] fragen184740 = new String[ 7 ];
-   private String[] antworten184740 = new String[ 7 ];
+   private String[] koordinaten181740 = new String[7];
+   private String[] bemerkung181740 = new String[7];
+   private String[] fragen181740 = new String[7];
+   private String[] antworten181740 = new String[7];
+   private String[] koordinaten184040 = new String[7];
+   private String[] bemerkung184040 = new String[7];
+   private String[] fragen184040 = new String[7];
+   private String[] antworten184040 = new String[7];
+   private String[] koordinaten184740 = new String[7];
+   private String[] bemerkung184740 = new String[7];
+   private String[] fragen184740 = new String[7];
+   private String[] antworten184740 = new String[7];
 
    // Kolkhagen
-   private String[] koordinaten184342 = new String[ 7 ];
-   private String[] bemerkung184342 = new String[ 7 ];
-   private String[] fragen184342 = new String[ 7 ];
-   private String[] antworten184342 = new String[ 7 ];
+   private String[] koordinaten184342 = new String[7];
+   private String[] bemerkung184342 = new String[7];
+   private String[] fragen184342 = new String[7];
+   private String[] antworten184342 = new String[7];
+
+   // Gast
+   private String[] koordinatenGast1 = new String[7];
+   private String[] bemerkungGast1 = new String[7];
+   private String[] fragenGast1 = new String[7];
+   private String[] antwortenGast1 = new String[7];
+
+   private String[] koordinatenGast2 = new String[7];
+   private String[] bemerkungGast2 = new String[7];
+   private String[] fragenGast2 = new String[7];
+   private String[] antwortenGast2 = new String[7];
 
    public void setInputFile( String inputFile ) {
       this.inputFile = inputFile;
@@ -110,452 +120,424 @@ public class ReadExcel {
             Sheet sheet = w.getSheet( index );
             String[] shit = w.getSheetNames();
 
-            if( shit[ index ].equals( "Sammelplatz" ) ) {
+            if( shit[index].equals( "Sammelplatz" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        if( i < 2)
-                           sammelplatzKoordinaten[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        if( i < 2 )
+                           sammelplatzKoordinaten[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 1, i );
-                        if( i < 2)
-                        sammelplatz[ i ] = cell.getContents();
+                        if( i < 2 )
+                           sammelplatz[i] = cell.getContents();
                      }
                   }
                }
-            }
-            else if( shit[ index ].equals( "18-47-10" ) ) {
+            } else if( shit[index].equals( "18-47-10" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten184710[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        koordinaten184710[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung184710[ i ] = cell.getContents();
-                     }
-                     else if( j == 2 ) {
+                        bemerkung184710[i] = cell.getContents();
+                     } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen184710[ i ] = cell.getContents();
-                     }
-                     else if( j == 3 ) {
+                        fragen184710[i] = cell.getContents();
+                     } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten184710[ i ] = cell.getContents();
+                        antworten184710[i] = cell.getContents();
                      }
                   }
                }
-            }
-            else if( shit[ index ].equals( "18-44-10" ) ) {
+            } else if( shit[index].equals( "18-44-10" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten184410[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        koordinaten184410[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung184410[ i ] = cell.getContents();
-                     }
-                     else if( j == 2 ) {
+                        bemerkung184410[i] = cell.getContents();
+                     } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen184410[ i ] = cell.getContents();
-                     }
-                     else if( j == 3 ) {
+                        fragen184410[i] = cell.getContents();
+                     } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten184410[ i ] = cell.getContents();
+                        antworten184410[i] = cell.getContents();
                      }
                   }
                }
-            }
-            else if( shit[ index ].equals( "18-43-10" ) ) {
+            } else if( shit[index].equals( "18-43-10" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten184310[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        koordinaten184310[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung184310[ i ] = cell.getContents();
-                     }
-                     else if( j == 2 ) {
+                        bemerkung184310[i] = cell.getContents();
+                     } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen184310[ i ] = cell.getContents();
-                     }
-                     else if( j == 3 ) {
+                        fragen184310[i] = cell.getContents();
+                     } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten184310[ i ] = cell.getContents();
+                        antworten184310[i] = cell.getContents();
                      }
                   }
                }
-            }
-            else if( shit[ index ].equals( "18-17-10" ) ) {
+            } else if( shit[index].equals( "18-17-10" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten181710[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        koordinaten181710[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung181710[ i ] = cell.getContents();
-                     }
-                     else if( j == 2 ) {
+                        bemerkung181710[i] = cell.getContents();
+                     } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen181710[ i ] = cell.getContents();
-                     }
-                     else if( j == 3 ) {
+                        fragen181710[i] = cell.getContents();
+                     } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten181710[ i ] = cell.getContents();
+                        antworten181710[i] = cell.getContents();
                      }
                   }
                }
-            }
-            else if( shit[ index ].equals( "18-45-20" ) ) {
+            } else if( shit[index].equals( "18-45-20" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten184520[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        koordinaten184520[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung184520[ i ] = cell.getContents();
-                     }
-                     else if( j == 2 ) {
+                        bemerkung184520[i] = cell.getContents();
+                     } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen184520[ i ] = cell.getContents();
-                     }
-                     else if( j == 3 ) {
+                        fragen184520[i] = cell.getContents();
+                     } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten184520[ i ] = cell.getContents();
+                        antworten184520[i] = cell.getContents();
                      }
                   }
                }
-            }
-            else if( shit[ index ].equals( "18-24-20" ) ) {
+            } else if( shit[index].equals( "18-24-20" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten182420[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        koordinaten182420[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung182420[ i ] = cell.getContents();
-                     }
-                     else if( j == 2 ) {
+                        bemerkung182420[i] = cell.getContents();
+                     } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen182420[ i ] = cell.getContents();
-                     }
-                     else if( j == 3 ) {
+                        fragen182420[i] = cell.getContents();
+                     } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten182420[ i ] = cell.getContents();
+                        antworten182420[i] = cell.getContents();
                      }
                   }
                }
-            }
-            else if( shit[ index ].equals( "18-17-20" ) ) {
+            } else if( shit[index].equals( "18-17-20" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten181720[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        koordinaten181720[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung181720[ i ] = cell.getContents();
-                     }
-                     else if( j == 2 ) {
+                        bemerkung181720[i] = cell.getContents();
+                     } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen181720[ i ] = cell.getContents();
-                     }
-                     else if( j == 3 ) {
+                        fragen181720[i] = cell.getContents();
+                     } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten181720[ i ] = cell.getContents();
+                        antworten181720[i] = cell.getContents();
                      }
                   }
                }
-            }
-            else if( shit[ index ].equals( "18-17-30" ) ) {
+            } else if( shit[index].equals( "18-17-30" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten181730[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        koordinaten181730[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung181730[ i ] = cell.getContents();
-                     }
-                     else if( j == 2 ) {
+                        bemerkung181730[i] = cell.getContents();
+                     } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen181730[ i ] = cell.getContents();
-                     }
-                     else if( j == 3 ) {
+                        fragen181730[i] = cell.getContents();
+                     } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten181730[ i ] = cell.getContents();
+                        antworten181730[i] = cell.getContents();
                      }
                   }
                }
-            }
-            else if( shit[ index ].equals( "18-51-30" ) ) {
+            } else if( shit[index].equals( "18-51-30" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten185130[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        koordinaten185130[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung185130[ i ] = cell.getContents();
-                     }
-                     else if( j == 2 ) {
+                        bemerkung185130[i] = cell.getContents();
+                     } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen185130[ i ] = cell.getContents();
-                     }
-                     else if( j == 3 ) {
+                        fragen185130[i] = cell.getContents();
+                     } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten185130[ i ] = cell.getContents();
+                        antworten185130[i] = cell.getContents();
                      }
                   }
                }
-            }
-            else if( shit[ index ].equals( "18-47-30" ) ) {
+            } else if( shit[index].equals( "18-47-30" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten184730[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        koordinaten184730[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung184730[ i ] = cell.getContents();
-                     }
-                     else if( j == 2 ) {
+                        bemerkung184730[i] = cell.getContents();
+                     } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen184730[ i ] = cell.getContents();
-                     }
-                     else if( j == 3 ) {
+                        fragen184730[i] = cell.getContents();
+                     } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten184730[ i ] = cell.getContents();
+                        antworten184730[i] = cell.getContents();
                      }
                   }
                }
-            }
-            else if( shit[ index ].equals( "18-17-32" ) ) {
+            } else if( shit[index].equals( "18-17-32" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten181732[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        koordinaten181732[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung181732[ i ] = cell.getContents();
-                     }
-                     else if( j == 2 ) {
+                        bemerkung181732[i] = cell.getContents();
+                     } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen181732[ i ] = cell.getContents();
-                     }
-                     else if( j == 3 ) {
+                        fragen181732[i] = cell.getContents();
+                     } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten181732[ i ] = cell.getContents();
+                        antworten181732[i] = cell.getContents();
                      }
                   }
                }
-            }
-            else if( shit[ index ].equals( "18-40-32" ) ) {
+            } else if( shit[index].equals( "18-40-32" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten184032[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        koordinaten184032[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung184032[ i ] = cell.getContents();
-                     }
-                     else if( j == 2 ) {
+                        bemerkung184032[i] = cell.getContents();
+                     } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen184032[ i ] = cell.getContents();
-                     }
-                     else if( j == 3 ) {
+                        fragen184032[i] = cell.getContents();
+                     } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten184032[ i ] = cell.getContents();
+                        antworten184032[i] = cell.getContents();
                      }
                   }
                }
-            }
-            else if( shit[ index ].equals( "18-47-32" ) ) {
+            } else if( shit[index].equals( "18-47-32" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten184732[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        koordinaten184732[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung184732[ i ] = cell.getContents();
-                     }
-                     else if( j == 2 ) {
+                        bemerkung184732[i] = cell.getContents();
+                     } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen184732[ i ] = cell.getContents();
-                     }
-                     else if( j == 3 ) {
+                        fragen184732[i] = cell.getContents();
+                     } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten184732[ i ] = cell.getContents();
+                        antworten184732[i] = cell.getContents();
                      }
                   }
                }
-            }
-            else if( shit[ index ].equals( "18-17-40" ) ) {
+            } else if( shit[index].equals( "18-17-40" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten181740[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        koordinaten181740[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung181740[ i ] = cell.getContents();
-                     }
-                     else if( j == 2 ) {
+                        bemerkung181740[i] = cell.getContents();
+                     } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen181740[ i ] = cell.getContents();
-                     }
-                     else if( j == 3 ) {
+                        fragen181740[i] = cell.getContents();
+                     } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten181740[ i ] = cell.getContents();
+                        antworten181740[i] = cell.getContents();
                      }
                   }
                }
-            }
-            else if( shit[ index ].equals( "18-40-40" ) ) {
+            } else if( shit[index].equals( "18-40-40" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten184040[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        koordinaten184040[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung184040[ i ] = cell.getContents();
-                     }
-                     else if( j == 2 ) {
+                        bemerkung184040[i] = cell.getContents();
+                     } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen184040[ i ] = cell.getContents();
-                     }
-                     else if( j == 3 ) {
+                        fragen184040[i] = cell.getContents();
+                     } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten184040[ i ] = cell.getContents();
+                        antworten184040[i] = cell.getContents();
                      }
                   }
                }
-            }
-            else if( shit[ index ].equals( "18-47-40" ) ) {
+            } else if( shit[index].equals( "18-47-40" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten184740[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        koordinaten184740[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung184740[ i ] = cell.getContents();
-                     }
-                     else if( j == 2 ) {
+                        bemerkung184740[i] = cell.getContents();
+                     } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen184740[ i ] = cell.getContents();
-                     }
-                     else if( j == 3 ) {
+                        fragen184740[i] = cell.getContents();
+                     } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten184740[ i ] = cell.getContents();
+                        antworten184740[i] = cell.getContents();
                      }
                   }
                }
-            }
-            else if( shit[ index ].equals( "18-43-42" ) ) {
+            } else if( shit[index].equals( "18-43-42" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten184342[ i ] = cell.getContents();
-                     }
-                     else if( j == 1 ) {
+                        koordinaten184342[i] = cell.getContents();
+                     } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung184342[ i ] = cell.getContents();
-                     }
-                     else if( j == 2 ) {
+                        bemerkung184342[i] = cell.getContents();
+                     } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen184342[ i ] = cell.getContents();
-                     }
-                     else if( j == 3 ) {
+                        fragen184342[i] = cell.getContents();
+                     } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten184342[ i ] = cell.getContents();
+                        antworten184342[i] = cell.getContents();
+                     }
+                  }
+               }
+            } else if( shit[index].equals( "Gast1" ) ) {
+               for( int j = 0; j < sheet.getColumns(); j++ ) {
+                  for( int i = 1; i < sheet.getRows(); i++ ) {
+                     if( j == 0 ) {
+                        // handle koordinaten
+                        Cell cell = sheet.getCell( 0, i );
+                        koordinatenGast1[i] = cell.getContents();
+                     } else if( j == 1 ) {
+                        Cell cell = sheet.getCell( 1, i );
+                        bemerkungGast1[i] = cell.getContents();
+                     } else if( j == 2 ) {
+                        // handle fragen
+                        Cell cell = sheet.getCell( 2, i );
+                        fragenGast1[i] = cell.getContents();
+                     } else if( j == 3 ) {
+                        // handle antworten
+                        Cell cell = sheet.getCell( 3, i );
+                        antwortenGast1[i] = cell.getContents();
+                     }
+                  }
+               }
+            } else if( shit[index].equals( "Gast2" ) ) {
+               for( int j = 0; j < sheet.getColumns(); j++ ) {
+                  for( int i = 1; i < sheet.getRows(); i++ ) {
+                     if( j == 0 ) {
+                        // handle koordinaten
+                        Cell cell = sheet.getCell( 0, i );
+                        koordinatenGast2[i] = cell.getContents();
+                     } else if( j == 1 ) {
+                        Cell cell = sheet.getCell( 1, i );
+                        bemerkungGast2[i] = cell.getContents();
+                     } else if( j == 2 ) {
+                        // handle fragen
+                        Cell cell = sheet.getCell( 2, i );
+                        fragenGast2[i] = cell.getContents();
+                     } else if( j == 3 ) {
+                        // handle antworten
+                        Cell cell = sheet.getCell( 3, i );
+                        antwortenGast2[i] = cell.getContents();
                      }
                   }
                }
             }
          }
-      }
-      catch( BiffException e ) {
+      } catch( BiffException e ) {
          e.printStackTrace();
       }
    }
@@ -839,10 +821,10 @@ public class ReadExcel {
    public String[] getBemerkung184342( ) {
       return bemerkung184342;
    }
-   
-   public String[] getKoordinaten(String rufname) {
+
+   public String[] getKoordinaten( String rufname ) {
       switch( rufname ) {
-      // Barnstedt
+         // Barnstedt
          case "18-47-40":
             return koordinaten184740;
          case "18-40-40":
@@ -882,17 +864,21 @@ public class ReadExcel {
             return koordinaten184732;
          case "18-17-32":
             return koordinaten181732;
+         case "Gast1":
+            return koordinatenGast1;
+         case "Gast2":
+            return koordinatenGast2;
          default:
             System.out.println( "Something going wrong!" );
             break;
-            
+
       }
       return null;
    }
-   
-   public String[] getBemerkung(String rufname) {
+
+   public String[] getBemerkung( String rufname ) {
       switch( rufname ) {
-      // Barnstedt
+         // Barnstedt
          case "18-47-40":
             return bemerkung184740;
          case "18-40-40":
@@ -932,17 +918,21 @@ public class ReadExcel {
             return bemerkung184732;
          case "18-17-32":
             return bemerkung181732;
+         case "Gast1":
+            return bemerkungGast1;
+         case "Gast2":
+            return bemerkungGast2;
          default:
             System.out.println( "Something going wrong!" );
             break;
-            
+
       }
       return null;
    }
-   
-   public String[] getFragen(String rufname) {
+
+   public String[] getFragen( String rufname ) {
       switch( rufname ) {
-      // Barnstedt
+         // Barnstedt
          case "18-47-40":
             return fragen184740;
          case "18-40-40":
@@ -982,17 +972,21 @@ public class ReadExcel {
             return fragen184732;
          case "18-17-32":
             return fragen181732;
+         case "Gast1":
+            return fragenGast1;
+         case "Gast2":
+            return fragenGast2;
          default:
             System.out.println( "Something going wrong!" );
             break;
-            
+
       }
       return null;
    }
-   
-   public String[] getAntworten(String rufname) {
+
+   public String[] getAntworten( String rufname ) {
       switch( rufname ) {
-      // Barnstedt
+         // Barnstedt
          case "18-47-40":
             return antworten184740;
          case "18-40-40":
@@ -1032,12 +1026,15 @@ public class ReadExcel {
             return antworten184732;
          case "18-17-32":
             return antworten181732;
+         case "Gast1":
+            return antwortenGast1;
+         case "Gast2":
+            return antwortenGast2;
          default:
             System.out.println( "Something going wrong!" );
             break;
-            
       }
       return null;
    }
-   
+
 }

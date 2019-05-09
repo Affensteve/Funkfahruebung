@@ -24,8 +24,14 @@ public class KolkhagenPanel {
       Checkbox lf8Kolkhagen = new Checkbox( "18-43-42" );
       lf8Kolkhagen.addItemListener( listener );
       kolkhagenPanel.add( lf8Kolkhagen );
-      kolkhagenPanel.add( new JLabel( " " ), "wrap 32" );
-      kolkhagenPanel.add( new JLabel( " " ), "wrap 10" );
+
+      Checkbox gast1 = new Checkbox( "Gast1" );
+      gast1.addItemListener( listener );
+      kolkhagenPanel.add( gast1 );
+      Checkbox gast2 = new Checkbox( "Gast2" );
+      gast2.addItemListener( listener );
+      kolkhagenPanel.add( gast2 );
+      kolkhagenPanel.add( new JLabel( " " ), "wrap 8" );
    }
 
    public JPanel getKolkhagenPanel( ) {
