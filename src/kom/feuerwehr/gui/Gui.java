@@ -685,7 +685,6 @@ public class Gui extends JFrame implements ItemListener {
 
          @Override
          public void keyReleased( KeyEvent e ) {
-            System.out.println( textField.getText() );
             String[] split = textField.getText().split( "" );
             String stringbuilder = "<html>";
             for( int i = 0; i < split.length; i++ ) {
