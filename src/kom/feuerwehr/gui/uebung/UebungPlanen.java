@@ -46,7 +46,7 @@ public class UebungPlanen extends JDialog {
       uebungPlanenPanel.add( new JButton( "Abbrechen" ), "cell 8 23" );
       uebungPlanenPanel.add( new JButton( "�bernehmen" ), "cell 9 23" );
 
-      uebungsplaner( uebungPlanenPanel, "18-47-10", "1" );
+      uebungsplaner( uebungPlanenPanel, "18-24-10", "1" );
       uebungsplaner( uebungPlanenPanel, "18-44-10", "2" );
       uebungsplaner( uebungPlanenPanel, "18-43-10", "3" );
       uebungsplaner( uebungPlanenPanel, "18-17-10", "4" );
@@ -56,10 +56,10 @@ public class UebungPlanen extends JDialog {
       uebungsplaner( uebungPlanenPanel, "18-51-30", "8" );
       uebungsplaner( uebungPlanenPanel, "18-47-30", "9" );
       uebungsplaner( uebungPlanenPanel, "18-17-30", "10" );
-      uebungsplaner( uebungPlanenPanel, "18-47-32", "11" );
+      uebungsplaner( uebungPlanenPanel, "18-23-32", "11" );
       uebungsplaner( uebungPlanenPanel, "18-40-32", "12" );
       uebungsplaner( uebungPlanenPanel, "18-17-32", "13" );
-      uebungsplaner( uebungPlanenPanel, "18-47-40", "14" );
+      uebungsplaner( uebungPlanenPanel, "18-23-40", "14" );
       uebungsplaner( uebungPlanenPanel, "18-40-40", "15" );
       uebungsplaner( uebungPlanenPanel, "18-17-40", "16" );
       uebungsplaner( uebungPlanenPanel, "18-43-42", "17" );

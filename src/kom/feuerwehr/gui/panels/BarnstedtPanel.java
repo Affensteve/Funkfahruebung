@@ -22,7 +22,7 @@ public class BarnstedtPanel {
       barnstedtPanel.setLayout( new MigLayout( "wrap 1" ) );
       barnstedtPanel.add( new JLabel( "Barnstedt" ) );
       barnstedtPanel.add( new JLabel( new ImageIcon( "res/Wappen_Barnstedt.png" ) ) );
-      Checkbox tlfBarnstedt = new Checkbox( "18-47-40" );
+      Checkbox tlfBarnstedt = new Checkbox( "18-23-40" );
       tlfBarnstedt.addItemListener( listener );
       barnstedtPanel.add( tlfBarnstedt );
       Checkbox tsfbarnstedt = new Checkbox( "18-40-40" );
