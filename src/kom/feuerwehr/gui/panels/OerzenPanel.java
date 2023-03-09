@@ -22,7 +22,7 @@ public class OerzenPanel {
       oerzenPanel.setLayout( new MigLayout( "wrap 1" ) );
       oerzenPanel.add( new JLabel( "Oerzen" ) );
       oerzenPanel.add( new JLabel( new ImageIcon( "res/Wappen_Embsen.png" ) ) );
-      Checkbox tlfOerzen = new Checkbox( "18-47-32" );
+      Checkbox tlfOerzen = new Checkbox( "18-23-32" );
       tlfOerzen.addItemListener( listener );
       oerzenPanel.add( tlfOerzen );
       Checkbox tsfOerzen = new Checkbox( "18-40-32" );

@@ -22,7 +22,7 @@ public class MelbeckPanel {
       melbeckPanel.setLayout( new MigLayout( "wrap 1" ) );
       melbeckPanel.add( new JLabel( "Melbeck" ) );
       melbeckPanel.add( new JLabel( new ImageIcon( "res/Wappen_Melbeck.png" ) ) );
-      Checkbox tlfMelbeck = new Checkbox( "18-47-10" );
+      Checkbox tlfMelbeck = new Checkbox( "18-24-10" );
       tlfMelbeck.addItemListener( listener );
       melbeckPanel.add( tlfMelbeck );
       Checkbox lf16Melbeck = new Checkbox( "18-44-10" );

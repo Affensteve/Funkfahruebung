@@ -16,10 +16,10 @@ public class ReadExcel {
    private String[] sammelplatzKoordinaten = new String[2];
    private String[] sammelplatz = new String[2];
    // Melbeck
-   private String[] koordinaten184710 = new String[7];
-   private String[] bemerkung184710 = new String[7];
-   private String[] fragen184710 = new String[7];
-   private String[] antworten184710 = new String[7];
+   private String[] koordinaten182410 = new String[7];
+   private String[] bemerkung182410 = new String[7];
+   private String[] fragen182410 = new String[7];
+   private String[] antworten182410 = new String[7];
    private String[] koordinaten184410 = new String[7];
    private String[] bemerkung184410 = new String[7];
    private String[] fragen184410 = new String[7];
@@ -70,10 +70,10 @@ public class ReadExcel {
    private String[] bemerkung184032 = new String[7];
    private String[] fragen184032 = new String[7];
    private String[] antworten184032 = new String[7];
-   private String[] koordinaten184732 = new String[7];
-   private String[] bemerkung184732 = new String[7];
-   private String[] fragen184732 = new String[7];
-   private String[] antworten184732 = new String[7];
+   private String[] koordinaten182332 = new String[7];
+   private String[] bemerkung182332 = new String[7];
+   private String[] fragen182332 = new String[7];
+   private String[] antworten182332 = new String[7];
 
    // Barnstedt
    private String[] koordinaten181740 = new String[7];
@@ -84,10 +84,10 @@ public class ReadExcel {
    private String[] bemerkung184040 = new String[7];
    private String[] fragen184040 = new String[7];
    private String[] antworten184040 = new String[7];
-   private String[] koordinaten184740 = new String[7];
-   private String[] bemerkung184740 = new String[7];
-   private String[] fragen184740 = new String[7];
-   private String[] antworten184740 = new String[7];
+   private String[] koordinaten182340 = new String[7];
+   private String[] bemerkung182340 = new String[7];
+   private String[] fragen182340 = new String[7];
+   private String[] antworten182340 = new String[7];
 
    // Kolkhagen
    private String[] koordinaten184342 = new String[7];
@@ -136,24 +136,24 @@ public class ReadExcel {
                      }
                   }
                }
-            } else if( shit[index].equals( "18-47-10" ) ) {
+            } else if( shit[index].equals( "18-24-10" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten184710[i] = cell.getContents();
+                        koordinaten182410[i] = cell.getContents();
                      } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung184710[i] = cell.getContents();
+                        bemerkung182410[i] = cell.getContents();
                      } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen184710[i] = cell.getContents();
+                        fragen182410[i] = cell.getContents();
                      } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten184710[i] = cell.getContents();
+                        antworten182410[i] = cell.getContents();
                      }
                   }
                }
@@ -388,24 +388,24 @@ public class ReadExcel {
                      }
                   }
                }
-            } else if( shit[index].equals( "18-47-32" ) ) {
+            } else if( shit[index].equals( "18-23-32" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten184732[i] = cell.getContents();
+                        koordinaten182332[i] = cell.getContents();
                      } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung184732[i] = cell.getContents();
+                        bemerkung182332[i] = cell.getContents();
                      } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen184732[i] = cell.getContents();
+                        fragen182332[i] = cell.getContents();
                      } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten184732[i] = cell.getContents();
+                        antworten182332[i] = cell.getContents();
                      }
                   }
                }
@@ -451,24 +451,24 @@ public class ReadExcel {
                      }
                   }
                }
-            } else if( shit[index].equals( "18-47-40" ) ) {
+            } else if( shit[index].equals( "18-23-40" ) ) {
                for( int j = 0; j < sheet.getColumns(); j++ ) {
                   for( int i = 1; i < sheet.getRows(); i++ ) {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        koordinaten184740[i] = cell.getContents();
+                        koordinaten182340[i] = cell.getContents();
                      } else if( j == 1 ) {
                         Cell cell = sheet.getCell( 1, i );
-                        bemerkung184740[i] = cell.getContents();
+                        bemerkung182340[i] = cell.getContents();
                      } else if( j == 2 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 2, i );
-                        fragen184740[i] = cell.getContents();
+                        fragen182340[i] = cell.getContents();
                      } else if( j == 3 ) {
                         // handle antworten
                         Cell cell = sheet.getCell( 3, i );
-                        antworten184740[i] = cell.getContents();
+                        antworten182340[i] = cell.getContents();
                      }
                   }
                }
@@ -542,16 +542,16 @@ public class ReadExcel {
       }
    }
 
-   public String[] getKoordinaten184710( ) {
-      return koordinaten184710;
+   public String[] getKoordinaten182410( ) {
+      return koordinaten182410;
    }
 
-   public String[] getFragen184710( ) {
-      return fragen184710;
+   public String[] getFragen182410( ) {
+      return fragen182410;
    }
 
-   public String[] getAntworten184710( ) {
-      return antworten184710;
+   public String[] getAntworten182410( ) {
+      return antworten182410;
    }
 
    public String[] getKoordinaten184410( ) {
@@ -686,16 +686,16 @@ public class ReadExcel {
       return antworten184032;
    }
 
-   public String[] getKoordinaten184732( ) {
-      return koordinaten184732;
+   public String[] getKoordinaten182332( ) {
+      return koordinaten182332;
    }
 
-   public String[] getFragen184732( ) {
-      return fragen184732;
+   public String[] getFragen182332( ) {
+      return fragen182332;
    }
 
-   public String[] getAntworten184732( ) {
-      return antworten184732;
+   public String[] getAntworten182332( ) {
+      return antworten182332;
    }
 
    public String[] getKoordinaten181740( ) {
@@ -722,16 +722,16 @@ public class ReadExcel {
       return antworten184040;
    }
 
-   public String[] getKoordinaten184740( ) {
-      return koordinaten184740;
+   public String[] getKoordinaten182340( ) {
+      return koordinaten182340;
    }
 
-   public String[] getFragen184740( ) {
-      return fragen184740;
+   public String[] getFragen182340( ) {
+      return fragen182340;
    }
 
-   public String[] getAntworten184740( ) {
-      return antworten184740;
+   public String[] getAntworten182340( ) {
+      return antworten182340;
    }
 
    public String[] getKoordinaten184342( ) {
@@ -754,8 +754,8 @@ public class ReadExcel {
       return sammelplatz;
    }
 
-   public String[] getBemerkung184710( ) {
-      return bemerkung184710;
+   public String[] getBemerkung182410( ) {
+      return bemerkung182410;
    }
 
    public String[] getBemerkung184410( ) {
@@ -802,8 +802,8 @@ public class ReadExcel {
       return bemerkung184032;
    }
 
-   public String[] getBemerkung184732( ) {
-      return bemerkung184732;
+   public String[] getBemerkung182332( ) {
+      return bemerkung182332;
    }
 
    public String[] getBemerkung181740( ) {
@@ -814,8 +814,8 @@ public class ReadExcel {
       return bemerkung184040;
    }
 
-   public String[] getBemerkung184740( ) {
-      return bemerkung184740;
+   public String[] getBemerkung182340( ) {
+      return bemerkung182340;
    }
 
    public String[] getBemerkung184342( ) {
@@ -825,8 +825,8 @@ public class ReadExcel {
    public String[] getKoordinaten( String rufname ) {
       switch( rufname ) {
          // Barnstedt
-         case "18-47-40":
-            return koordinaten184740;
+         case "18-23-40":
+            return koordinaten182340;
          case "18-40-40":
             return koordinaten184040;
          case "18-17-40":
@@ -855,13 +855,13 @@ public class ReadExcel {
             return koordinaten184310;
          case "18-44-10":
             return koordinaten184410;
-         case "18-47-10":
-            return koordinaten184710;
+         case "18-24-10":
+            return koordinaten182410;
          // Oerzen
          case "18-40-32":
             return koordinaten184032;
-         case "18-47-32":
-            return koordinaten184732;
+         case "18-23-32":
+            return koordinaten182332;
          case "18-17-32":
             return koordinaten181732;
          case "Gast1":
@@ -879,8 +879,8 @@ public class ReadExcel {
    public String[] getBemerkung( String rufname ) {
       switch( rufname ) {
          // Barnstedt
-         case "18-47-40":
-            return bemerkung184740;
+         case "18-23-40":
+            return bemerkung182340;
          case "18-40-40":
             return bemerkung184040;
          case "18-17-40":
@@ -909,13 +909,13 @@ public class ReadExcel {
             return bemerkung184310;
          case "18-44-10":
             return bemerkung184410;
-         case "18-47-10":
-            return bemerkung184710;
+         case "18-24-10":
+            return bemerkung182410;
          // Oerzen
          case "18-40-32":
             return bemerkung184032;
-         case "18-47-32":
-            return bemerkung184732;
+         case "18-23-32":
+            return bemerkung182332;
          case "18-17-32":
             return bemerkung181732;
          case "Gast1":
@@ -933,8 +933,8 @@ public class ReadExcel {
    public String[] getFragen( String rufname ) {
       switch( rufname ) {
          // Barnstedt
-         case "18-47-40":
-            return fragen184740;
+         case "18-23-40":
+            return fragen182340;
          case "18-40-40":
             return fragen184040;
          case "18-17-40":
@@ -963,13 +963,13 @@ public class ReadExcel {
             return fragen184310;
          case "18-44-10":
             return fragen184410;
-         case "18-47-10":
-            return fragen184710;
+         case "18-24-10":
+            return fragen182410;
          // Oerzen
          case "18-40-32":
             return fragen184032;
-         case "18-47-32":
-            return fragen184732;
+         case "18-23-32":
+            return fragen182332;
          case "18-17-32":
             return fragen181732;
          case "Gast1":
@@ -987,8 +987,8 @@ public class ReadExcel {
    public String[] getAntworten( String rufname ) {
       switch( rufname ) {
          // Barnstedt
-         case "18-47-40":
-            return antworten184740;
+         case "18-23-40":
+            return antworten182340;
          case "18-40-40":
             return antworten184040;
          case "18-17-40":
@@ -1017,13 +1017,13 @@ public class ReadExcel {
             return antworten184310;
          case "18-44-10":
             return antworten184410;
-         case "18-47-10":
-            return antworten184710;
+         case "18-24-10":
+            return antworten182410;
          // Oerzen
          case "18-40-32":
             return antworten184032;
-         case "18-47-32":
-            return antworten184732;
+         case "18-23-32":
+            return antworten182332;
          case "18-17-32":
             return antworten181732;
          case "Gast1":
