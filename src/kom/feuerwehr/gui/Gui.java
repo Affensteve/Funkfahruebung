@@ -1,4 +1,3 @@
-
 package kom.feuerwehr.gui;
 
 import kom.feuerwehr.gui.external.Switch;
@@ -13,6 +12,7 @@ import kom.feuerwehr.task.ReadExcel;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,13 +30,38 @@ import java.net.UnknownHostException;
 @SuppressWarnings( "serial" )
 public class Gui extends JFrame implements ItemListener {
 
-   private JLabel rufname_lbl = new JLabel( "18-11-30" );
+   private final JLabel rufname_lbl = new JLabel( "18-11-30" );
+   private final ReadExcel reader;
+   private final JButton btnRichtig;
+   private final JButton buttonBack;
+   private final JLabel lblAuto;
+   private final JLabel lblKoordinaten;
+   private final JTextArea lblFrage;
+   private final JTextArea lblBemerkung;
+   private final JTextArea lblAntwort;
+   private final JPanel mtwMelbeckQueuePanel;
+   private final JPanel lf16MelbeckQueuePanel;
+   private final JPanel tlfMelbeckQueuePanel;
+   private final JPanel tlfDeutschEvernQueuePanel;
+   private final JPanel lf8DeutschEvernQueuePanel;
+   private final JPanel mtwDeutschEvernQueuePanel;
+   private final JPanel rw1EmbsenQueuePanel;
+   private final JPanel lfEmbsenQueuePanel;
+   private final JPanel mtwEmbsenQueuePanel;
+   private final JPanel mtwOerzenQueuePanel;
+   private final JPanel tlfOerzenQueuePanel;
+   private final JPanel mtwBarnstedtQueuePanel;
+   private final JPanel tlfBarnstedtQueuePanel;
+   private final JPanel lf8KolkhagenQueuePanel;
+   private final JPanel gast1QueuePanel;
+   private final JPanel gast2QueuePanel;
+   private final JPanel gast3QueuePanel;
+   private final JPanel gast4QueuePanel;
+   private final JPanel gast5QueuePanel;
+   private final JPanel vehiclePanel;
+   private final Switch btnSwitchConnection;
+   private final JTextField textField;
    private Socket socketServer;
-   private ReadExcel reader;
-
-   private JButton btnRichtig;
-   private JButton buttonBack;
-
    private int tlfBarnstedtIndex = 0;
    private int tsfBarnstedtIndex = 0;
    private int mtwBarnstedtIndex = 0;
@@ -49,55 +74,26 @@ public class Gui extends JFrame implements ItemListener {
    private int mtwEmbsenIndex = 0;
    private int tlfMelbeckIndex = 0;
    private int lf16MelbeckIndex = 0;
-   private int lf8MelbeckIndex = 0;
    private int mtwMelbeckIndex = 0;
    private int tlfDeutschEvernIndex = 0;
    private int lf8DeutschEvernIndex = 0;
    private int mtwDeutschEvernIndex = 0;
-
    private int gast1Index = 0;
    private int gast2Index = 0;
-
+   private int gast3Index = 0;
+   private int gast4Index = 0;
+   private int gast5Index = 0;
    private String button;
-   private JLabel lblAuto;
-   private JLabel lblKoordinaten;
-   private JTextArea lblFrage;
-   private JTextArea lblBemerkung;
-   private JTextArea lblAntwort;
-   private JPanel mtwMelbeckQueuePanel;
-   private JPanel lf16MelbeckQueuePanel;
-   private JPanel tlfMelbeckQueuePanel;
    private JPanel lf8MelbeckQueuePanel;
-   private JPanel tlfDeutschEvernQueuePanel;
-   private JPanel lf8DeutschEvernQueuePanel;
-   private JPanel mtwDeutschEvernQueuePanel;
-   private JPanel rw1EmbsenQueuePanel;
-   private JPanel lfEmbsenQueuePanel;
-   private JPanel mtwEmbsenQueuePanel;
-   private JPanel mtwOerzenQueuePanel;
    private JPanel tsfOerzenQueuePanel;
-   private JPanel tlfOerzenQueuePanel;
-   private JPanel mtwBarnstedtQueuePanel;
    private JPanel tsfBarnstedtQueuePanel;
-   private JPanel tlfBarnstedtQueuePanel;
-   private JPanel lf8KolkhagenQueuePanel;
-
-   private JPanel gast1QueuePanel;
-   private JPanel gast2QueuePanel;
-
    private boolean offlineArbeiten = true;
-
-   private JPanel vehiclePanel;
-
    private MelbeckPanel melbeckPanel;
    private DeutschEvernPanel deutschEvernPanel;
    private EmbsenPanel embsenPanel;
    private OerzenPanel oerzenPanel;
    private BarnstedtPanel barnstedtPanel;
    private KolkhagenPanel kolkhagenPanel;
-
-   private Switch btnSwitchConnection;
-   private JTextField textField;
 
    public Gui( ) {
       reader = new ReadExcel();
@@ -120,8 +116,7 @@ public class Gui extends JFrame implements ItemListener {
          e.printStackTrace();
       }
       vehiclePanel = new JPanel();
-      vehiclePanel.setLayout(
-            new MigLayout( "wrap 6", "[115][115][115][115][115][115][]", "[][35][35][35][][][][][][][][][]" ) );
+      vehiclePanel.setLayout( new MigLayout( "wrap 6", "[115][115][115][115][115][115][]", "[][35][35][35][][][][][][][][][]" ) );
 
       setupPanel();
 
@@ -170,19 +165,19 @@ public class Gui extends JFrame implements ItemListener {
       lf16MelbeckQueuePanel.setVisible( false );
       vehiclePanel.add( lf16MelbeckQueuePanel, "hidemode 3" );
 
-      lf8MelbeckQueuePanel = new JPanel();
-      lf8MelbeckQueuePanel.addMouseListener( mouseListener( lf8MelbeckQueuePanel ) );
-      lf8MelbeckQueuePanel.addMouseListener( new MouseAdapter() {
-         @Override
-         public void mouseClicked( MouseEvent arg0 ) {
-            handleSortedVehicleQueue( lf8MelbeckIndex, "lf8MelbeckIndex", "18-43-10" );
-         }
-      } );
-      JLabel label_20 = new JLabel( "18-43-10" );
-      label_20.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
-      lf8MelbeckQueuePanel.add( label_20 );
-      lf8MelbeckQueuePanel.setVisible( false );
-      vehiclePanel.add( lf8MelbeckQueuePanel, "hidemode 3" );
+//      lf8MelbeckQueuePanel = new JPanel();
+//      lf8MelbeckQueuePanel.addMouseListener( mouseListener( lf8MelbeckQueuePanel ) );
+//      lf8MelbeckQueuePanel.addMouseListener( new MouseAdapter() {
+//         @Override
+//         public void mouseClicked( MouseEvent arg0 ) {
+//            handleSortedVehicleQueue( lf8MelbeckIndex, "lf8MelbeckIndex", "18-43-10" );
+//         }
+//      } );
+//      JLabel label_20 = new JLabel( "18-43-10" );
+//      label_20.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
+//      lf8MelbeckQueuePanel.add( label_20 );
+//      lf8MelbeckQueuePanel.setVisible( false );
+//      vehiclePanel.add( lf8MelbeckQueuePanel, "hidemode 3" );
 
       mtwMelbeckQueuePanel = new JPanel();
       mtwMelbeckQueuePanel.addMouseListener( mouseListener( mtwMelbeckQueuePanel ) );
@@ -298,19 +293,19 @@ public class Gui extends JFrame implements ItemListener {
       tlfOerzenQueuePanel.setVisible( false );
       vehiclePanel.add( tlfOerzenQueuePanel, "hidemode 3" );
 
-      tsfOerzenQueuePanel = new JPanel();
-      tsfOerzenQueuePanel.addMouseListener( mouseListener( tsfOerzenQueuePanel ) );
-      tsfOerzenQueuePanel.addMouseListener( new MouseAdapter() {
-         @Override
-         public void mouseClicked( MouseEvent arg0 ) {
-            handleSortedVehicleQueue( tsfOerzenIndex, "tsfOerzenIndex", "18-40-32" );
-         }
-      } );
-      JLabel label_25 = new JLabel( "18-40-32" );
-      label_25.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
-      tsfOerzenQueuePanel.add( label_25 );
-      tsfOerzenQueuePanel.setVisible( false );
-      vehiclePanel.add( tsfOerzenQueuePanel, "hidemode 3" );
+//      tsfOerzenQueuePanel = new JPanel();
+//      tsfOerzenQueuePanel.addMouseListener( mouseListener( tsfOerzenQueuePanel ) );
+//      tsfOerzenQueuePanel.addMouseListener( new MouseAdapter() {
+//         @Override
+//         public void mouseClicked( MouseEvent arg0 ) {
+//            handleSortedVehicleQueue( tsfOerzenIndex, "tsfOerzenIndex", "18-40-32" );
+//         }
+//      } );
+//      JLabel label_25 = new JLabel( "18-40-32" );
+//      label_25.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
+//      tsfOerzenQueuePanel.add( label_25 );
+//      tsfOerzenQueuePanel.setVisible( false );
+//      vehiclePanel.add( tsfOerzenQueuePanel, "hidemode 3" );
 
       mtwOerzenQueuePanel = new JPanel();
       mtwOerzenQueuePanel.addMouseListener( mouseListener( mtwOerzenQueuePanel ) );
@@ -337,22 +332,22 @@ public class Gui extends JFrame implements ItemListener {
       JLabel label_27 = new JLabel( "18-23-40" );
       label_27.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       tlfBarnstedtQueuePanel.add( label_27 );
-      tlfBarnstedtQueuePanel.setVisible( false );
+//      tlfBarnstedtQueuePanel.setVisible( false );
       vehiclePanel.add( tlfBarnstedtQueuePanel, "hidemode 3" );
 
-      tsfBarnstedtQueuePanel = new JPanel();
-      tsfBarnstedtQueuePanel.addMouseListener( mouseListener( tsfBarnstedtQueuePanel ) );
-      tsfBarnstedtQueuePanel.addMouseListener( new MouseAdapter() {
-         @Override
-         public void mouseClicked( MouseEvent arg0 ) {
-            handleSortedVehicleQueue( tsfBarnstedtIndex, "tsfBarnstedtIndex", "18-40-40" );
-         }
-      } );
-      JLabel label_28 = new JLabel( "18-40-40" );
-      label_28.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
-      tsfBarnstedtQueuePanel.add( label_28 );
-      tsfBarnstedtQueuePanel.setVisible( false );
-      vehiclePanel.add( tsfBarnstedtQueuePanel, "hidemode 3" );
+//      tsfBarnstedtQueuePanel = new JPanel();
+//      tsfBarnstedtQueuePanel.addMouseListener( mouseListener( tsfBarnstedtQueuePanel ) );
+//      tsfBarnstedtQueuePanel.addMouseListener( new MouseAdapter() {
+//         @Override
+//         public void mouseClicked( MouseEvent arg0 ) {
+//            handleSortedVehicleQueue( tsfBarnstedtIndex, "tsfBarnstedtIndex", "18-40-40" );
+//         }
+//      } );
+//      JLabel label_28 = new JLabel( "18-40-40" );
+//      label_28.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
+//      tsfBarnstedtQueuePanel.add( label_28 );
+//      tsfBarnstedtQueuePanel.setVisible( false );
+//      vehiclePanel.add( tsfBarnstedtQueuePanel, "hidemode 3" );
 
       mtwBarnstedtQueuePanel = new JPanel();
       mtwBarnstedtQueuePanel.addMouseListener( mouseListener( mtwBarnstedtQueuePanel ) );
@@ -411,6 +406,48 @@ public class Gui extends JFrame implements ItemListener {
       } );
       gast2QueuePanel.setVisible( false );
       vehiclePanel.add( gast2QueuePanel, "hidemode 3" );
+// ##############################################################################################
+      gast3QueuePanel = new JPanel();
+      JLabel label_gast3 = new JLabel( "  Gast3  " );
+      label_gast3.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
+      gast3QueuePanel.add( label_gast3 );
+      gast3QueuePanel.addMouseListener( mouseListener( gast3QueuePanel ) );
+      gast3QueuePanel.addMouseListener( new MouseAdapter() {
+         @Override
+         public void mouseClicked( MouseEvent arg0 ) {
+            handleSortedVehicleQueue( gast3Index, "gast3Index", "Gast3" );
+         }
+      } );
+      gast3QueuePanel.setVisible( false );
+      vehiclePanel.add( gast3QueuePanel, "hidemode 3" );
+
+      gast4QueuePanel = new JPanel();
+      JLabel label_gast4 = new JLabel( "  Gast4  " );
+      label_gast4.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
+      gast4QueuePanel.add( label_gast4 );
+      gast4QueuePanel.addMouseListener( mouseListener( gast4QueuePanel ) );
+      gast4QueuePanel.addMouseListener( new MouseAdapter() {
+         @Override
+         public void mouseClicked( MouseEvent arg0 ) {
+            handleSortedVehicleQueue( gast4Index, "gast4Index", "Gast4" );
+         }
+      } );
+      gast4QueuePanel.setVisible( false );
+      vehiclePanel.add( gast4QueuePanel, "hidemode 3" );
+
+      gast5QueuePanel = new JPanel();
+      JLabel label_gast5 = new JLabel( "  Gast5  " );
+      label_gast5.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
+      gast5QueuePanel.add( label_gast5 );
+      gast5QueuePanel.addMouseListener( mouseListener( gast5QueuePanel ) );
+      gast5QueuePanel.addMouseListener( new MouseAdapter() {
+         @Override
+         public void mouseClicked( MouseEvent arg0 ) {
+            handleSortedVehicleQueue( gast5Index, "gast5Index", "Gast5" );
+         }
+      } );
+      gast5QueuePanel.setVisible( false );
+      vehiclePanel.add( gast5QueuePanel, "hidemode 3" );
       // ############################################################
 
       final JFrame frame = new JFrame( "Funkfahrübung by ©S.Kunz" );
@@ -547,8 +584,7 @@ public class Gui extends JFrame implements ItemListener {
       editRufname.addActionListener( new ActionListener() {
          @Override
          public void actionPerformed( ActionEvent arg0 ) {
-            String str = JOptionPane.showInputDialog( frame, "Geben Sie den Rufnamen an: ",
-                  "Funkfahrübung by ©S.Kunz\n", 1 );
+            String str = JOptionPane.showInputDialog( frame, "Geben Sie den Rufnamen an: ", "Funkfahrübung by ©S.Kunz\n", 1 );
             rufname_lbl.setText( str );
          }
       } );
@@ -558,8 +594,7 @@ public class Gui extends JFrame implements ItemListener {
       connectToServer.addActionListener( new ActionListener() {
          @Override
          public void actionPerformed( ActionEvent arg0 ) {
-            String str = JOptionPane.showInputDialog( null, "Geben Sie die Ip-Adresse des Servers ein: ",
-                  "Funkfahrübung by ©S.Kunz\n", 1 );
+            String str = JOptionPane.showInputDialog( null, "Geben Sie die Ip-Adresse des Servers ein: ", "Funkfahrübung by ©S.Kunz\n", 1 );
             if( str != null ) {
                setIPAdresse( str );
             }
@@ -587,7 +622,7 @@ public class Gui extends JFrame implements ItemListener {
       JMenu submenu = new JMenu( "Ansicht" );
 
       ButtonGroup group = new ButtonGroup();
-      JRadioButtonMenuItem alphaMenuItem = new JRadioButtonMenuItem( "Aphabetisch" );
+      JRadioButtonMenuItem alphaMenuItem = new JRadioButtonMenuItem( "Alphabetisch" );
       alphaMenuItem.addActionListener( new ActionListener() {
          @Override
          public void actionPerformed( ActionEvent e ) {
@@ -641,6 +676,7 @@ public class Gui extends JFrame implements ItemListener {
             }
          }
       } );
+      chckbxmntmMtwZugriff.setState( true );
       submenu.add( chckbxmntmMtwZugriff );
       menuBar.add( submenu );
 
@@ -651,30 +687,30 @@ public class Gui extends JFrame implements ItemListener {
          @Override
          public void actionPerformed( ActionEvent arg0 ) {
             JOptionPane.showMessageDialog( frame,
-                  "Funkfahrübung by ©S.Kunz\n" + "Developer: Steffen Kunz\n" + "Version: 1.0 \n"
-                        + "\n©S.Kunz. All rights reserved",
+                  "Funkfahrübung by ©S.Kunz\n" + "Developer: Steffen Kunz\n" + "Contributor: Yannik Lüdemann\n" + "Version: 1.1 \n" + "\n©S.Kunz. All rights reserved",
                   "Über Funkfahrübung by ©S.Kunz", JOptionPane.INFORMATION_MESSAGE );
          }
       } );
-      
-      JMenu toolsmenu = new JMenu("Tools");
-      menuBar.add(toolsmenu);
-      
-      JMenuItem mntmToolsMenuItem = new JMenuItem("Kartenexport");
-      mntmToolsMenuItem.setEnabled(false);
-      mntmToolsMenuItem.addActionListener(new ActionListener() {
-      	public void actionPerformed(ActionEvent e) {
-      		ExportMap exporter = new ExportMap();
-      		try {
-				exporter.export();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-      	}
-      });
-      toolsmenu.add(mntmToolsMenuItem);
       helpMenu.add( aboutMenuItem );
+
+      JMenu toolsmenu = new JMenu( "Tools" );
+      menuBar.add( toolsmenu );
+
+      JMenuItem mntmToolsMenuItem = new JMenuItem( "Kartenexport" );
+      mntmToolsMenuItem.setEnabled( false );
+      mntmToolsMenuItem.addActionListener( new ActionListener() {
+         public void actionPerformed( ActionEvent e ) {
+            ExportMap exporter = new ExportMap();
+            try {
+               exporter.export();
+            } catch( IOException e1 ) {
+               // TODO Auto-generated catch block
+               e1.printStackTrace();
+            }
+         }
+      } );
+      toolsmenu.add( mntmToolsMenuItem );
+
       menuBar.add( helpMenu );
       frame.setJMenuBar( menuBar );
 
@@ -742,10 +778,9 @@ public class Gui extends JFrame implements ItemListener {
                      break;
                   case "H":
                   case "h":
-                     if( split.length >= 3 && i >= 2 && split[i - 1].equals( "C" ) | split[i - 1].equals( "c" )
-                           && split[i - 2].equals( "S" ) | split[i - 2].equals( "s" ) ) {
-                        stringbuilder = stringbuilder.replace( "<b>S</b>amuel <br><b>C</b>äsar <br>",
-                              "<b>SCH</b>ule <br>" );
+                     if( split.length >= 3 && i >= 2 && split[i - 1].equals( "C" ) | split[i - 1].equals( "c" ) && split[i - 2].equals(
+                           "S" ) | split[i - 2].equals( "s" ) ) {
+                        stringbuilder = stringbuilder.replace( "<b>S</b>amuel <br><b>C</b>äsar <br>", "<b>SCH</b>ule <br>" );
                      } else if( split.length >= 2 && i >= 1 && split[i - 1].equals( "C" ) | split[i - 1].equals( "c" ) ) {
                         stringbuilder = stringbuilder.replace( "<b>C</b>äsar <br>", "<b>CH</b>arlotte <br>" );
                      } else {
@@ -879,80 +914,69 @@ public class Gui extends JFrame implements ItemListener {
             if( button != null ) {
                switch( button ) {
                   case "tlfMelbeckIndex":
-                     tlfMelbeckIndex = btnBackBehavior( tlfMelbeckIndex, tlfMelbeckQueuePanel, "18-24-10",
-                           "tlfMelbeckIndex" );
+                     tlfMelbeckIndex = btnBackBehavior( tlfMelbeckIndex, tlfMelbeckQueuePanel, "18-24-10", "tlfMelbeckIndex" );
                      break;
                   case "lf16MelbeckIndex":
-                     lf16MelbeckIndex = btnBackBehavior( lf16MelbeckIndex, lf16MelbeckQueuePanel, "18-44-10",
-                           "lf16MelbeckIndex" );
-                     break;
-                  case "lf8MelbeckIndex":
-                     lf8MelbeckIndex = btnBackBehavior( lf8MelbeckIndex, lf8MelbeckQueuePanel, "18-43-10",
-                           "lf8MelbeckIndex" );
+                     lf16MelbeckIndex = btnBackBehavior( lf16MelbeckIndex, lf16MelbeckQueuePanel, "18-44-10", "lf16MelbeckIndex" );
                      break;
                   case "mtwMelbeckIndex":
-                     mtwMelbeckIndex = btnBackBehavior( mtwMelbeckIndex, mtwMelbeckQueuePanel, "18-17-10",
-                           "mtwMelbeckIndex" );
+                     mtwMelbeckIndex = btnBackBehavior( mtwMelbeckIndex, mtwMelbeckQueuePanel, "18-17-10", "mtwMelbeckIndex" );
                      break;
                   case "lf8DeutschEvernIndex":
-                     lf8DeutschEvernIndex = btnBackBehavior( lf8DeutschEvernIndex, lf8DeutschEvernQueuePanel,
-                           "18-45-20", "lf8DeutschEvernIndex" );
+                     lf8DeutschEvernIndex = btnBackBehavior( lf8DeutschEvernIndex, lf8DeutschEvernQueuePanel, "18-45-20", "lf8DeutschEvernIndex" );
                      break;
                   case "tlfDeutschEvernIndex":
-                     tlfDeutschEvernIndex = btnBackBehavior( tlfDeutschEvernIndex, tlfDeutschEvernQueuePanel,
-                           "18-24-20", "tlfDeutschEvernIndex" );
+                     tlfDeutschEvernIndex = btnBackBehavior( tlfDeutschEvernIndex, tlfDeutschEvernQueuePanel, "18-24-20", "tlfDeutschEvernIndex" );
                      break;
                   case "mtwDeutschEvernIndex":
-                     mtwDeutschEvernIndex = btnBackBehavior( mtwDeutschEvernIndex, mtwDeutschEvernQueuePanel,
-                           "18-17-20", "mtwDeutschEvernIndex" );
+                     mtwDeutschEvernIndex = btnBackBehavior( mtwDeutschEvernIndex, mtwDeutschEvernQueuePanel, "18-17-20", "mtwDeutschEvernIndex" );
                      break;
                   case "rwEmbsenIndex":
-                     rwEmbsenIndex = btnBackBehavior( rwEmbsenIndex, rw1EmbsenQueuePanel, "18-51-30",
-                           "rwEmbsenIndex" );
+                     rwEmbsenIndex = btnBackBehavior( rwEmbsenIndex, rw1EmbsenQueuePanel, "18-51-30", "rwEmbsenIndex" );
                      break;
                   case "lfEmbsenIndex":
                      lfEmbsenIndex = btnBackBehavior( lfEmbsenIndex, lfEmbsenQueuePanel, "18-47-30", "lfEmbsenIndex" );
                      break;
                   case "mtwEmbsenIndex":
-                     mtwEmbsenIndex = btnBackBehavior( mtwEmbsenIndex, mtwEmbsenQueuePanel, "18-17-30",
-                           "mtwEmbsenIndex" );
+                     mtwEmbsenIndex = btnBackBehavior( mtwEmbsenIndex, mtwEmbsenQueuePanel, "18-17-30", "mtwEmbsenIndex" );
                      break;
                   case "tlfOerzenIndex":
-                     tlfOerzenIndex = btnBackBehavior( tlfOerzenIndex, tlfOerzenQueuePanel, "18-23-32",
-                           "tlfOerzenIndex" );
+                     tlfOerzenIndex = btnBackBehavior( tlfOerzenIndex, tlfOerzenQueuePanel, "18-23-32", "tlfOerzenIndex" );
                      break;
                   case "tsfOerzenIndex":
-                     tsfOerzenIndex = btnBackBehavior( tsfOerzenIndex, tsfOerzenQueuePanel, "18-40-32",
-                           "tsfOerzenIndex" );
+                     tsfOerzenIndex = btnBackBehavior( tsfOerzenIndex, tsfOerzenQueuePanel, "18-40-32", "tsfOerzenIndex" );
                      break;
                   case "mtwOerzenIndex":
-                     mtwOerzenIndex = btnBackBehavior( mtwOerzenIndex, mtwOerzenQueuePanel, "18-17-32",
-                           "mtwOerzenIndex" );
+                     mtwOerzenIndex = btnBackBehavior( mtwOerzenIndex, mtwOerzenQueuePanel, "18-17-32", "mtwOerzenIndex" );
                      break;
                   case "tlfBarnstedtIndex":
-                     tlfBarnstedtIndex = btnBackBehavior( tlfBarnstedtIndex, tlfBarnstedtQueuePanel, "18-23-40",
-                           "tlfBarnstedtIndex" );
+                     tlfBarnstedtIndex = btnBackBehavior( tlfBarnstedtIndex, tlfBarnstedtQueuePanel, "18-23-40", "tlfBarnstedtIndex" );
                      break;
                   case "tsfBarnstedtIndex":
-                     tsfBarnstedtIndex = btnBackBehavior( tsfBarnstedtIndex, tsfBarnstedtQueuePanel, "18-40-40",
-                           "tsfBarnstedtIndex" );
+                     tsfBarnstedtIndex = btnBackBehavior( tsfBarnstedtIndex, tsfBarnstedtQueuePanel, "18-40-40", "tsfBarnstedtIndex" );
                      break;
                   case "mtwBarnstedtIndex":
-                     mtwBarnstedtIndex = btnBackBehavior( mtwBarnstedtIndex, mtwBarnstedtQueuePanel, "18-17-40",
-                           "mtwBarnstedtIndex" );
+                     mtwBarnstedtIndex = btnBackBehavior( mtwBarnstedtIndex, mtwBarnstedtQueuePanel, "18-17-40", "mtwBarnstedtIndex" );
                      break;
                   case "lf8KolkhagenIndex":
-                     lf8KolkhagenIndex = btnBackBehavior( lf8KolkhagenIndex, lf8KolkhagenQueuePanel, "18-43-42",
-                           "lf8KolkhagenIndex" );
+                     lf8KolkhagenIndex = btnBackBehavior( lf8KolkhagenIndex, lf8KolkhagenQueuePanel, "18-43-42", "lf8KolkhagenIndex" );
                      break;
 
                   case "gast1Index":
-                     gast1Index = btnBackBehavior( gast1Index, gast1QueuePanel, "Gast1",
-                           "gast1Index" );
+                     gast1Index = btnBackBehavior( gast1Index, gast1QueuePanel, "Gast1", "gast1Index" );
                      break;
                   case "gast2Index":
-                     gast2Index = btnBackBehavior( gast2Index, gast2QueuePanel, "Gast2",
-                           "gast2Index" );
+                     gast2Index = btnBackBehavior( gast2Index, gast2QueuePanel, "Gast2", "gast2Index" );
+                     break;
+
+                  case "gast3Index":
+                     gast3Index = btnBackBehavior( gast3Index, gast3QueuePanel, "Gast3", "gast3Index" );
+                     break;
+                  case "gast4Index":
+                     gast4Index = btnBackBehavior( gast4Index, gast4QueuePanel, "Gast4", "gast4Index" );
+                     break;
+                  case "gast5Index":
+                     gast5Index = btnBackBehavior( gast5Index, gast5QueuePanel, "Gast5", "gast5Index" );
                      break;
 
                   default:
@@ -969,8 +993,7 @@ public class Gui extends JFrame implements ItemListener {
                buttonBack.setText( "<<" );
                vehicleIndex = 0;
                setColor( panel, getBackground() );
-               setLabel( "", "", "Wollen Sie Florian Lüneburg " + rufname + " zur Funkfahrübung anmelden?", "",
-                     auto, rufname, vehicleIndex );
+               setLabel( "", "", "Wollen Sie Florian Lüneburg " + rufname + " zur Funkfahrübung anmelden?", "", auto, rufname, vehicleIndex );
                return vehicleIndex;
             } else if( vehicleIndex > 0 && vehicleIndex <= 6 ) {
                if( vehicleIndex == 1 ) {
@@ -989,13 +1012,11 @@ public class Gui extends JFrame implements ItemListener {
                   setColor( panel, Color.MAGENTA );
                }
                setLabel( reader.getKoordinaten( rufname )[vehicleIndex], reader.getBemerkung( rufname )[vehicleIndex],
-                     reader.getFragen( rufname )[vehicleIndex], reader.getAntworten( rufname )[vehicleIndex], auto,
-                     rufname, vehicleIndex );
+                     reader.getFragen( rufname )[vehicleIndex], reader.getAntworten( rufname )[vehicleIndex], auto, rufname, vehicleIndex );
                return vehicleIndex;
             } else {
                btnRichtig.setText( "Abmelden" );
-               setLabel( reader.getSammelplatzKoordinaten()[1], "", reader.getSammelplatz()[1], "", auto, rufname,
-                     vehicleIndex );
+               setLabel( reader.getSammelplatzKoordinaten()[1], "", reader.getSammelplatz()[1], "", auto, rufname, vehicleIndex );
                setColor( panel, Color.LIGHT_GRAY );
                return vehicleIndex;
             }
@@ -1013,81 +1034,69 @@ public class Gui extends JFrame implements ItemListener {
             if( button != null ) {
                switch( button ) {
                   case "tlfMelbeckIndex":
-                     tlfMelbeckIndex = btnCorrectBehavior( tlfMelbeckIndex, tlfMelbeckQueuePanel, "18-24-10",
-                           "tlfMelbeckIndex" );
+                     tlfMelbeckIndex = btnCorrectBehavior( tlfMelbeckIndex, tlfMelbeckQueuePanel, "18-24-10", "tlfMelbeckIndex" );
                      break;
                   case "lf16MelbeckIndex":
-                     lf16MelbeckIndex = btnCorrectBehavior( lf16MelbeckIndex, lf16MelbeckQueuePanel, "18-44-10",
-                           "lf16MelbeckIndex" );
-                     break;
-                  case "lf8MelbeckIndex":
-                     lf8MelbeckIndex = btnCorrectBehavior( lf8MelbeckIndex, lf8MelbeckQueuePanel, "18-43-10",
-                           "lf8MelbeckIndex" );
+                     lf16MelbeckIndex = btnCorrectBehavior( lf16MelbeckIndex, lf16MelbeckQueuePanel, "18-44-10", "lf16MelbeckIndex" );
                      break;
                   case "mtwMelbeckIndex":
-                     mtwMelbeckIndex = btnCorrectBehavior( mtwMelbeckIndex, mtwMelbeckQueuePanel, "18-17-10",
-                           "mtwMelbeckIndex" );
+                     mtwMelbeckIndex = btnCorrectBehavior( mtwMelbeckIndex, mtwMelbeckQueuePanel, "18-17-10", "mtwMelbeckIndex" );
                      break;
                   case "lf8DeutschEvernIndex":
-                     lf8DeutschEvernIndex = btnCorrectBehavior( lf8DeutschEvernIndex, lf8DeutschEvernQueuePanel,
-                           "18-45-20", "lf8DeutschEvernIndex" );
+                     lf8DeutschEvernIndex = btnCorrectBehavior( lf8DeutschEvernIndex, lf8DeutschEvernQueuePanel, "18-45-20", "lf8DeutschEvernIndex" );
                      break;
                   case "tlfDeutschEvernIndex":
-                     tlfDeutschEvernIndex = btnCorrectBehavior( tlfDeutschEvernIndex, tlfDeutschEvernQueuePanel,
-                           "18-24-20", "tlfDeutschEvernIndex" );
+                     tlfDeutschEvernIndex = btnCorrectBehavior( tlfDeutschEvernIndex, tlfDeutschEvernQueuePanel, "18-24-20", "tlfDeutschEvernIndex" );
                      break;
                   case "mtwDeutschEvernIndex":
-                     mtwDeutschEvernIndex = btnCorrectBehavior( mtwDeutschEvernIndex, mtwDeutschEvernQueuePanel,
-                           "18-17-20", "mtwDeutschEvernIndex" );
+                     mtwDeutschEvernIndex = btnCorrectBehavior( mtwDeutschEvernIndex, mtwDeutschEvernQueuePanel, "18-17-20", "mtwDeutschEvernIndex" );
                      break;
                   case "rwEmbsenIndex":
-                     rwEmbsenIndex = btnCorrectBehavior( rwEmbsenIndex, rw1EmbsenQueuePanel, "18-51-30",
-                           "rwEmbsenIndex" );
+                     rwEmbsenIndex = btnCorrectBehavior( rwEmbsenIndex, rw1EmbsenQueuePanel, "18-51-30", "rwEmbsenIndex" );
                      break;
                   case "lfEmbsenIndex":
-                     lfEmbsenIndex = btnCorrectBehavior( lfEmbsenIndex, lfEmbsenQueuePanel, "18-47-30",
-                           "lfEmbsenIndex" );
+                     lfEmbsenIndex = btnCorrectBehavior( lfEmbsenIndex, lfEmbsenQueuePanel, "18-47-30", "lfEmbsenIndex" );
                      break;
                   case "mtwEmbsenIndex":
-                     mtwEmbsenIndex = btnCorrectBehavior( mtwEmbsenIndex, mtwEmbsenQueuePanel, "18-17-30",
-                           "mtwEmbsenIndex" );
+                     mtwEmbsenIndex = btnCorrectBehavior( mtwEmbsenIndex, mtwEmbsenQueuePanel, "18-17-30", "mtwEmbsenIndex" );
                      break;
                   case "tlfOerzenIndex":
-                     tlfOerzenIndex = btnCorrectBehavior( tlfOerzenIndex, tlfOerzenQueuePanel, "18-23-32",
-                           "tlfOerzenIndex" );
+                     tlfOerzenIndex = btnCorrectBehavior( tlfOerzenIndex, tlfOerzenQueuePanel, "18-23-32", "tlfOerzenIndex" );
                      break;
                   case "tsfOerzenIndex":
-                     tsfOerzenIndex = btnCorrectBehavior( tsfOerzenIndex, tsfOerzenQueuePanel, "18-40-32",
-                           "tsfOerzenIndex" );
+                     tsfOerzenIndex = btnCorrectBehavior( tsfOerzenIndex, tsfOerzenQueuePanel, "18-40-32", "tsfOerzenIndex" );
                      break;
                   case "mtwOerzenIndex":
-                     mtwOerzenIndex = btnCorrectBehavior( mtwOerzenIndex, mtwOerzenQueuePanel, "18-17-32",
-                           "mtwOerzenIndex" );
+                     mtwOerzenIndex = btnCorrectBehavior( mtwOerzenIndex, mtwOerzenQueuePanel, "18-17-32", "mtwOerzenIndex" );
                      break;
                   case "tlfBarnstedtIndex":
-                     tlfBarnstedtIndex = btnCorrectBehavior( tlfBarnstedtIndex, tlfBarnstedtQueuePanel, "18-23-40",
-                           "tlfBarnstedtIndex" );
+                     tlfBarnstedtIndex = btnCorrectBehavior( tlfBarnstedtIndex, tlfBarnstedtQueuePanel, "18-23-40", "tlfBarnstedtIndex" );
                      break;
                   case "tsfBarnstedtIndex":
-                     tsfBarnstedtIndex = btnCorrectBehavior( tsfBarnstedtIndex, tsfBarnstedtQueuePanel, "18-40-40",
-                           "tsfBarnstedtIndex" );
+                     tsfBarnstedtIndex = btnCorrectBehavior( tsfBarnstedtIndex, tsfBarnstedtQueuePanel, "18-40-40", "tsfBarnstedtIndex" );
                      break;
                   case "mtwBarnstedtIndex":
-                     mtwBarnstedtIndex = btnCorrectBehavior( mtwBarnstedtIndex, mtwBarnstedtQueuePanel, "18-17-40",
-                           "mtwBarnstedtIndex" );
+                     mtwBarnstedtIndex = btnCorrectBehavior( mtwBarnstedtIndex, mtwBarnstedtQueuePanel, "18-17-40", "mtwBarnstedtIndex" );
                      break;
                   case "lf8KolkhagenIndex":
-                     lf8KolkhagenIndex = btnCorrectBehavior( lf8KolkhagenIndex, lf8KolkhagenQueuePanel, "18-43-42",
-                           "lf8KolkhagenIndex" );
+                     lf8KolkhagenIndex = btnCorrectBehavior( lf8KolkhagenIndex, lf8KolkhagenQueuePanel, "18-43-42", "lf8KolkhagenIndex" );
                      break;
                   case "gast1Index":
-                     gast1Index = btnCorrectBehavior( gast1Index, gast1QueuePanel, "Gast1",
-                           "gast1Index" );
+                     gast1Index = btnCorrectBehavior( gast1Index, gast1QueuePanel, "Gast1", "gast1Index" );
                      break;
                   case "gast2Index":
-                     gast2Index = btnCorrectBehavior( gast2Index, gast2QueuePanel, "Gast2",
-                           "gast2Index" );
+                     gast2Index = btnCorrectBehavior( gast2Index, gast2QueuePanel, "Gast2", "gast2Index" );
                      break;
+                  case "gast3Index":
+                     gast3Index = btnCorrectBehavior( gast3Index, gast3QueuePanel, "Gast3", "gast3Index" );
+                     break;
+                  case "gast4Index":
+                     gast4Index = btnCorrectBehavior( gast4Index, gast4QueuePanel, "Gast4", "gast4Index" );
+                     break;
+                  case "gast5Index":
+                     gast5Index = btnCorrectBehavior( gast5Index, gast5QueuePanel, "Gast5", "gast5Index" );
+                     break;
+
                   default:
                      System.out.println( "Unknown Button: " + button );
                      break;
@@ -1115,15 +1124,13 @@ public class Gui extends JFrame implements ItemListener {
                   setColor( panel, Color.MAGENTA );
                }
                setLabel( reader.getKoordinaten( rufname )[vehicleIndex], reader.getBemerkung( rufname )[vehicleIndex],
-                     reader.getFragen( rufname )[vehicleIndex], reader.getAntworten( rufname )[vehicleIndex], auto,
-                     rufname, vehicleIndex );
+                     reader.getFragen( rufname )[vehicleIndex], reader.getAntworten( rufname )[vehicleIndex], auto, rufname, vehicleIndex );
                return vehicleIndex;
             } else {
                vehicleIndex++;
                if( vehicleIndex == 7 ) {
                   btnRichtig.setText( "Abmelden" );
-                  setLabel( reader.getSammelplatzKoordinaten()[1], "", reader.getSammelplatz()[1], "", auto,
-                        rufname, vehicleIndex );
+                  setLabel( reader.getSammelplatzKoordinaten()[1], "", reader.getSammelplatz()[1], "", auto, rufname, vehicleIndex );
                   setColor( panel, Color.LIGHT_GRAY );
                } else {
                   vehicleIndex = 8;
@@ -1171,18 +1178,15 @@ public class Gui extends JFrame implements ItemListener {
    private void handleSortedVehicleQueue( int vehicleIndex, String auto, String rufname ) {
       if( vehicleIndex == 0 ) {
          btnRichtig.setText( "Anmelden" );
-         setLabel( "", "", "Wollen Sie Florian Lüneburg " + rufname + " zur Funkfahrübung anmelden?", "", auto,
-               rufname, vehicleIndex );
+         setLabel( "", "", "Wollen Sie Florian Lüneburg " + rufname + " zur Funkfahrübung anmelden?", "", auto, rufname, vehicleIndex );
       } else if( vehicleIndex >= 1 && vehicleIndex <= 6 ) {
 
-         setLabel( reader.getKoordinaten( rufname )[vehicleIndex], reader.getBemerkung( rufname )[vehicleIndex],
-               reader.getFragen( rufname )[vehicleIndex], reader.getAntworten( rufname )[vehicleIndex], auto, rufname,
-               vehicleIndex );
+         setLabel( reader.getKoordinaten( rufname )[vehicleIndex], reader.getBemerkung( rufname )[vehicleIndex], reader.getFragen( rufname )[vehicleIndex],
+               reader.getAntworten( rufname )[vehicleIndex], auto, rufname, vehicleIndex );
       } else if( vehicleIndex > 6 ) {
          if( vehicleIndex == 7 ) {
             btnRichtig.setText( "Abmelden" );
-            setLabel( reader.getSammelplatzKoordinaten()[1], "", reader.getSammelplatz()[1], "", auto, rufname,
-                  vehicleIndex );
+            setLabel( reader.getSammelplatzKoordinaten()[1], "", reader.getSammelplatz()[1], "", auto, rufname, vehicleIndex );
          } else {
             vehicleIndex = 8;
             setLabel( "", "", "", "", auto, rufname, vehicleIndex );
@@ -1198,74 +1202,78 @@ public class Gui extends JFrame implements ItemListener {
       switch( e.getItem().toString() ) {
          // Barnstedt
          case "18-23-40":
-            tlfBarnstedtQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            tlfBarnstedtQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          case "18-40-40":
-            tsfBarnstedtQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            tsfBarnstedtQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          case "18-17-40":
-            mtwBarnstedtQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            mtwBarnstedtQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          // Deutsch Evern
          case "18-24-20":
-            tlfDeutschEvernQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            tlfDeutschEvernQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          case "18-45-20":
-            lf8DeutschEvernQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            lf8DeutschEvernQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          case "18-17-20":
-            mtwDeutschEvernQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            mtwDeutschEvernQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          // Embsen
          case "18-51-30":
-            rw1EmbsenQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            rw1EmbsenQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          case "18-47-30":
-            lfEmbsenQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            lfEmbsenQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          case "18-17-30":
-            mtwEmbsenQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            mtwEmbsenQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          // Kolkhagen
          case "18-43-42":
-            lf8KolkhagenQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            lf8KolkhagenQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          // Melbeck
          case "18-17-10":
-            mtwMelbeckQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
-            break;
-         case "18-43-10":
-            lf8MelbeckQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            mtwMelbeckQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          case "18-44-10":
-            lf16MelbeckQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            lf16MelbeckQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          case "18-24-10":
-            tlfMelbeckQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            tlfMelbeckQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          // Oerzen
          case "18-40-32":
-            tsfOerzenQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            tsfOerzenQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          case "18-23-32":
-            tlfOerzenQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            tlfOerzenQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          case "18-17-32":
-            mtwOerzenQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            mtwOerzenQueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          case "Gast1":
-            gast1QueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            gast1QueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          case "Gast2":
-            gast2QueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED ? true : false );
+            gast2QueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
+            break;
+         case "Gast3":
+            gast3QueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
+            break;
+         case "Gast4":
+            gast4QueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
+            break;
+         case "Gast5":
+            gast5QueuePanel.setVisible( e.getStateChange() == ItemEvent.SELECTED );
             break;
          default:
             System.out.println( "Something going wrong: " + e.getItem().toString() );
             break;
       }
    }
-
-   ;
 
    /**
     * @param koordinate
@@ -1276,8 +1284,7 @@ public class Gui extends JFrame implements ItemListener {
     * @param rufname
     * @param aktuellerStand
     */
-   public void setLabel( String koordinate, String bemerkung, String frage, String antwort, String auto, String rufname,
-                         int aktuellerStand ) {
+   public void setLabel( String koordinate, String bemerkung, String frage, String antwort, String auto, String rufname, int aktuellerStand ) {
       if( lblKoordinaten.getText().startsWith( "ND" ) ) {
          lblKoordinaten.setToolTipText( "Nordpol Dora" );
       } else if( lblKoordinaten.getText().startsWith( "PE" ) ) {
@@ -1321,8 +1328,7 @@ public class Gui extends JFrame implements ItemListener {
          try {
             socketServer = new Socket( ipAdress, 13112 );
          } catch( UnknownHostException ex ) {
-            System.out.println(
-                  "UnknownHostException bei Verbindung zu Host 'localhost', Port 13112: " + ex.getMessage() );
+            System.out.println( "UnknownHostException bei Verbindung zu Host 'localhost', Port 13112: " + ex.getMessage() );
          } catch( IOException ex ) {
             System.out.println( "IOException bei Verbindung zu Host 'localhost', Port 13112: " + ex.getMessage() );
          }

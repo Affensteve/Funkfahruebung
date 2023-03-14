@@ -25,13 +25,13 @@ public class BarnstedtPanel {
       Checkbox tlfBarnstedt = new Checkbox( "18-23-40" );
       tlfBarnstedt.addItemListener( listener );
       barnstedtPanel.add( tlfBarnstedt );
-      Checkbox tsfbarnstedt = new Checkbox( "18-40-40" );
-      tsfbarnstedt.addItemListener( listener );
-      barnstedtPanel.add( tsfbarnstedt );
       mtwBarnstedt = new Checkbox( "18-17-40" );
-      mtwBarnstedt.setEnabled( false );
+      mtwBarnstedt.setEnabled( true );
       mtwBarnstedt.addItemListener( listener );
       barnstedtPanel.add( mtwBarnstedt );
+      Checkbox gast2 = new Checkbox( "Gast2" );
+      gast2.addItemListener( listener );
+      barnstedtPanel.add( gast2 );
       barnstedtPanel.add( new JLabel( " " ), "wrap 8" );
    }
 

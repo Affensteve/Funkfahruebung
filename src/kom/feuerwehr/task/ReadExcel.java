@@ -1,4 +1,3 @@
-
 package kom.feuerwehr.task;
 
 import jxl.Cell;
@@ -13,98 +12,111 @@ public class ReadExcel {
    private String inputFile;
 
    // Sammelplatz
-   private String[] sammelplatzKoordinaten = new String[2];
-   private String[] sammelplatz = new String[2];
+   private final String[] sammelplatzKoordinaten = new String[2];
+   private final String[] sammelplatz = new String[2];
    // Melbeck
-   private String[] koordinaten182410 = new String[7];
-   private String[] bemerkung182410 = new String[7];
-   private String[] fragen182410 = new String[7];
-   private String[] antworten182410 = new String[7];
-   private String[] koordinaten184410 = new String[7];
-   private String[] bemerkung184410 = new String[7];
-   private String[] fragen184410 = new String[7];
-   private String[] antworten184410 = new String[7];
-   private String[] koordinaten184310 = new String[7];
-   private String[] bemerkung184310 = new String[7];
-   private String[] fragen184310 = new String[7];
-   private String[] antworten184310 = new String[7];
-   private String[] koordinaten181710 = new String[7];
-   private String[] bemerkung181710 = new String[7];
-   private String[] fragen181710 = new String[7];
-   private String[] antworten181710 = new String[7];
+   private final String[] koordinaten182410 = new String[7];
+   private final String[] bemerkung182410 = new String[7];
+   private final String[] fragen182410 = new String[7];
+   private final String[] antworten182410 = new String[7];
+   private final String[] koordinaten184410 = new String[7];
+   private final String[] bemerkung184410 = new String[7];
+   private final String[] fragen184410 = new String[7];
+   private final String[] antworten184410 = new String[7];
+   private final String[] koordinaten184310 = new String[7];
+   private final String[] bemerkung184310 = new String[7];
+   private final String[] fragen184310 = new String[7];
+   private final String[] antworten184310 = new String[7];
+   private final String[] koordinaten181710 = new String[7];
+   private final String[] bemerkung181710 = new String[7];
+   private final String[] fragen181710 = new String[7];
+   private final String[] antworten181710 = new String[7];
 
    // Deutsch Evern
-   private String[] koordinaten181720 = new String[7];
-   private String[] bemerkung181720 = new String[7];
-   private String[] fragen181720 = new String[7];
-   private String[] antworten181720 = new String[7];
-   private String[] koordinaten182420 = new String[7];
-   private String[] bemerkung182420 = new String[7];
-   private String[] fragen182420 = new String[7];
-   private String[] antworten182420 = new String[7];
-   private String[] koordinaten184520 = new String[7];
-   private String[] bemerkung184520 = new String[7];
-   private String[] fragen184520 = new String[7];
-   private String[] antworten184520 = new String[7];
+   private final String[] koordinaten181720 = new String[7];
+   private final String[] bemerkung181720 = new String[7];
+   private final String[] fragen181720 = new String[7];
+   private final String[] antworten181720 = new String[7];
+   private final String[] koordinaten182420 = new String[7];
+   private final String[] bemerkung182420 = new String[7];
+   private final String[] fragen182420 = new String[7];
+   private final String[] antworten182420 = new String[7];
+   private final String[] koordinaten184520 = new String[7];
+   private final String[] bemerkung184520 = new String[7];
+   private final String[] fragen184520 = new String[7];
+   private final String[] antworten184520 = new String[7];
 
    // Embsen
-   private String[] koordinaten181730 = new String[7];
-   private String[] bemerkung181730 = new String[7];
-   private String[] fragen181730 = new String[7];
-   private String[] antworten181730 = new String[7];
-   private String[] koordinaten185130 = new String[7];
-   private String[] bemerkung185130 = new String[7];
-   private String[] fragen185130 = new String[7];
-   private String[] antworten185130 = new String[7];
-   private String[] koordinaten184730 = new String[7];
-   private String[] bemerkung184730 = new String[7];
-   private String[] fragen184730 = new String[7];
-   private String[] antworten184730 = new String[7];
+   private final String[] koordinaten181730 = new String[7];
+   private final String[] bemerkung181730 = new String[7];
+   private final String[] fragen181730 = new String[7];
+   private final String[] antworten181730 = new String[7];
+   private final String[] koordinaten185130 = new String[7];
+   private final String[] bemerkung185130 = new String[7];
+   private final String[] fragen185130 = new String[7];
+   private final String[] antworten185130 = new String[7];
+   private final String[] koordinaten184730 = new String[7];
+   private final String[] bemerkung184730 = new String[7];
+   private final String[] fragen184730 = new String[7];
+   private final String[] antworten184730 = new String[7];
 
    // Oerzen
-   private String[] koordinaten181732 = new String[7];
-   private String[] bemerkung181732 = new String[7];
-   private String[] fragen181732 = new String[7];
-   private String[] antworten181732 = new String[7];
-   private String[] koordinaten184032 = new String[7];
-   private String[] bemerkung184032 = new String[7];
-   private String[] fragen184032 = new String[7];
-   private String[] antworten184032 = new String[7];
-   private String[] koordinaten182332 = new String[7];
-   private String[] bemerkung182332 = new String[7];
-   private String[] fragen182332 = new String[7];
-   private String[] antworten182332 = new String[7];
+   private final String[] koordinaten181732 = new String[7];
+   private final String[] bemerkung181732 = new String[7];
+   private final String[] fragen181732 = new String[7];
+   private final String[] antworten181732 = new String[7];
+   private final String[] koordinaten184032 = new String[7];
+   private final String[] bemerkung184032 = new String[7];
+   private final String[] fragen184032 = new String[7];
+   private final String[] antworten184032 = new String[7];
+   private final String[] koordinaten182332 = new String[7];
+   private final String[] bemerkung182332 = new String[7];
+   private final String[] fragen182332 = new String[7];
+   private final String[] antworten182332 = new String[7];
 
    // Barnstedt
-   private String[] koordinaten181740 = new String[7];
-   private String[] bemerkung181740 = new String[7];
-   private String[] fragen181740 = new String[7];
-   private String[] antworten181740 = new String[7];
-   private String[] koordinaten184040 = new String[7];
-   private String[] bemerkung184040 = new String[7];
-   private String[] fragen184040 = new String[7];
-   private String[] antworten184040 = new String[7];
-   private String[] koordinaten182340 = new String[7];
-   private String[] bemerkung182340 = new String[7];
-   private String[] fragen182340 = new String[7];
-   private String[] antworten182340 = new String[7];
+   private final String[] koordinaten181740 = new String[7];
+   private final String[] bemerkung181740 = new String[7];
+   private final String[] fragen181740 = new String[7];
+   private final String[] antworten181740 = new String[7];
+   private final String[] koordinaten184040 = new String[7];
+   private final String[] bemerkung184040 = new String[7];
+   private final String[] fragen184040 = new String[7];
+   private final String[] antworten184040 = new String[7];
+   private final String[] koordinaten182340 = new String[7];
+   private final String[] bemerkung182340 = new String[7];
+   private final String[] fragen182340 = new String[7];
+   private final String[] antworten182340 = new String[7];
 
    // Kolkhagen
-   private String[] koordinaten184342 = new String[7];
-   private String[] bemerkung184342 = new String[7];
-   private String[] fragen184342 = new String[7];
-   private String[] antworten184342 = new String[7];
+   private final String[] koordinaten184342 = new String[7];
+   private final String[] bemerkung184342 = new String[7];
+   private final String[] fragen184342 = new String[7];
+   private final String[] antworten184342 = new String[7];
 
    // Gast
-   private String[] koordinatenGast1 = new String[7];
-   private String[] bemerkungGast1 = new String[7];
-   private String[] fragenGast1 = new String[7];
-   private String[] antwortenGast1 = new String[7];
+   private final String[] koordinatenGast1 = new String[7];
+   private final String[] bemerkungGast1 = new String[7];
+   private final String[] fragenGast1 = new String[7];
+   private final String[] antwortenGast1 = new String[7];
 
-   private String[] koordinatenGast2 = new String[7];
-   private String[] bemerkungGast2 = new String[7];
-   private String[] fragenGast2 = new String[7];
-   private String[] antwortenGast2 = new String[7];
+   private final String[] koordinatenGast2 = new String[7];
+   private final String[] bemerkungGast2 = new String[7];
+   private final String[] fragenGast2 = new String[7];
+   private final String[] antwortenGast2 = new String[7];
+
+   private final String[] koordinatenGast3 = new String[7];
+   private final String[] bemerkungGast3 = new String[7];
+   private final String[] fragenGast3 = new String[7];
+   private final String[] antwortenGast3 = new String[7];
+   private final String[] koordinatenGast4 = new String[7];
+   private final String[] bemerkungGast4 = new String[7];
+   private final String[] fragenGast4 = new String[7];
+   private final String[] antwortenGast4 = new String[7];
+   private final String[] koordinatenGast5 = new String[7];
+   private final String[] bemerkungGast5 = new String[7];
+   private final String[] fragenGast5 = new String[7];
+   private final String[] antwortenGast5 = new String[7];
 
    public void setInputFile( String inputFile ) {
       this.inputFile = inputFile;
@@ -126,13 +138,11 @@ public class ReadExcel {
                      if( j == 0 ) {
                         // handle koordinaten
                         Cell cell = sheet.getCell( 0, i );
-                        if( i < 2 )
-                           sammelplatzKoordinaten[i] = cell.getContents();
+                        if( i < 2 ) sammelplatzKoordinaten[i] = cell.getContents();
                      } else if( j == 1 ) {
                         // handle fragen
                         Cell cell = sheet.getCell( 1, i );
-                        if( i < 2 )
-                           sammelplatz[i] = cell.getContents();
+                        if( i < 2 ) sammelplatz[i] = cell.getContents();
                      }
                   }
                }
@@ -535,6 +545,69 @@ public class ReadExcel {
                      }
                   }
                }
+            } else if( shit[index].equals( "Gast3" ) ) {
+               for( int j = 0; j < sheet.getColumns(); j++ ) {
+                  for( int i = 1; i < sheet.getRows(); i++ ) {
+                     if( j == 0 ) {
+                        // handle koordinaten
+                        Cell cell = sheet.getCell( 0, i );
+                        koordinatenGast3[i] = cell.getContents();
+                     } else if( j == 1 ) {
+                        Cell cell = sheet.getCell( 1, i );
+                        bemerkungGast3[i] = cell.getContents();
+                     } else if( j == 2 ) {
+                        // handle fragen
+                        Cell cell = sheet.getCell( 2, i );
+                        fragenGast3[i] = cell.getContents();
+                     } else if( j == 3 ) {
+                        // handle antworten
+                        Cell cell = sheet.getCell( 3, i );
+                        antwortenGast3[i] = cell.getContents();
+                     }
+                  }
+               }
+            } else if( shit[index].equals( "Gast4" ) ) {
+               for( int j = 0; j < sheet.getColumns(); j++ ) {
+                  for( int i = 1; i < sheet.getRows(); i++ ) {
+                     if( j == 0 ) {
+                        // handle koordinaten
+                        Cell cell = sheet.getCell( 0, i );
+                        koordinatenGast4[i] = cell.getContents();
+                     } else if( j == 1 ) {
+                        Cell cell = sheet.getCell( 1, i );
+                        bemerkungGast4[i] = cell.getContents();
+                     } else if( j == 2 ) {
+                        // handle fragen
+                        Cell cell = sheet.getCell( 2, i );
+                        fragenGast4[i] = cell.getContents();
+                     } else if( j == 3 ) {
+                        // handle antworten
+                        Cell cell = sheet.getCell( 3, i );
+                        antwortenGast4[i] = cell.getContents();
+                     }
+                  }
+               }
+            } else if( shit[index].equals( "Gast5" ) ) {
+               for( int j = 0; j < sheet.getColumns(); j++ ) {
+                  for( int i = 1; i < sheet.getRows(); i++ ) {
+                     if( j == 0 ) {
+                        // handle koordinaten
+                        Cell cell = sheet.getCell( 0, i );
+                        koordinatenGast5[i] = cell.getContents();
+                     } else if( j == 1 ) {
+                        Cell cell = sheet.getCell( 1, i );
+                        bemerkungGast5[i] = cell.getContents();
+                     } else if( j == 2 ) {
+                        // handle fragen
+                        Cell cell = sheet.getCell( 2, i );
+                        fragenGast5[i] = cell.getContents();
+                     } else if( j == 3 ) {
+                        // handle antworten
+                        Cell cell = sheet.getCell( 3, i );
+                        antwortenGast5[i] = cell.getContents();
+                     }
+                  }
+               }
             }
          }
       } catch( BiffException e ) {
@@ -868,8 +941,14 @@ public class ReadExcel {
             return koordinatenGast1;
          case "Gast2":
             return koordinatenGast2;
+         case "Gast3":
+            return koordinatenGast3;
+         case "Gast4":
+            return koordinatenGast4;
+         case "Gast5":
+            return koordinatenGast5;
          default:
-            System.out.println( "Something going wrong!" );
+            System.out.println( "Something going wrong! " + rufname );
             break;
 
       }
@@ -922,8 +1001,14 @@ public class ReadExcel {
             return bemerkungGast1;
          case "Gast2":
             return bemerkungGast2;
+         case "Gast3":
+            return bemerkungGast3;
+         case "Gast4":
+            return bemerkungGast4;
+         case "Gast5":
+            return bemerkungGast5;
          default:
-            System.out.println( "Something going wrong!" );
+            System.out.println( "Something going wrong! " + rufname );
             break;
 
       }
@@ -976,8 +1061,14 @@ public class ReadExcel {
             return fragenGast1;
          case "Gast2":
             return fragenGast2;
+         case "Gast3":
+            return fragenGast3;
+         case "Gast4":
+            return fragenGast4;
+         case "Gast5":
+            return fragenGast5;
          default:
-            System.out.println( "Something going wrong!" );
+            System.out.println( "Something going wrong! " + rufname );
             break;
 
       }
@@ -1030,8 +1121,14 @@ public class ReadExcel {
             return antwortenGast1;
          case "Gast2":
             return antwortenGast2;
+         case "Gast3":
+            return antwortenGast3;
+         case "Gast4":
+            return antwortenGast4;
+         case "Gast5":
+            return antwortenGast5;
          default:
-            System.out.println( "Something going wrong!" );
+            System.out.println( "Something going wrong! " + rufname );
             break;
       }
       return null;

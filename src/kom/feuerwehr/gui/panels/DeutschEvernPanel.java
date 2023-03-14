@@ -29,7 +29,7 @@ public class DeutschEvernPanel {
       tlfDE.addItemListener( listener );
       deutschEvernPanel.add( tlfDE );
       this.mtwDE = new Checkbox( "18-17-20" );
-      this.enableCheckBoxMTWDeutschEvern( false );
+      this.enableCheckBoxMTWDeutschEvern( true );
       this.mtwDE.addItemListener( listener );
       deutschEvernPanel.add( this.mtwDE );
       deutschEvernPanel.add( new JLabel( " " ), "wrap 8" );

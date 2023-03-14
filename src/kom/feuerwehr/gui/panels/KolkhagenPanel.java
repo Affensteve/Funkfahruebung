@@ -25,13 +25,16 @@ public class KolkhagenPanel {
       lf8Kolkhagen.addItemListener( listener );
       kolkhagenPanel.add( lf8Kolkhagen );
 
-      Checkbox gast1 = new Checkbox( "Gast1" );
-      gast1.addItemListener( listener );
-      kolkhagenPanel.add( gast1 );
-      Checkbox gast2 = new Checkbox( "Gast2" );
-      gast2.addItemListener( listener );
-      kolkhagenPanel.add( gast2 );
-      kolkhagenPanel.add( new JLabel( " " ), "wrap 8" );
+      Checkbox gast3 = new Checkbox( "Gast3" );
+      gast3.addItemListener( listener );
+      kolkhagenPanel.add( gast3 );
+      Checkbox gast4 = new Checkbox( "Gast4" );
+      gast4.addItemListener( listener );
+      kolkhagenPanel.add( gast4 );
+      Checkbox gast5 = new Checkbox( "Gast5" );
+      gast5.addItemListener( listener );
+      kolkhagenPanel.add( gast5 );
+//      kolkhagenPanel.add( new JLabel( " " ), "wrap 8" );
    }
 
    public JPanel getKolkhagenPanel( ) {

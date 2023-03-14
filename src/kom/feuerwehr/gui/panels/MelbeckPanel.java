@@ -28,13 +28,14 @@ public class MelbeckPanel {
       Checkbox lf16Melbeck = new Checkbox( "18-44-10" );
       lf16Melbeck.addItemListener( listener );
       melbeckPanel.add( lf16Melbeck );
-      Checkbox lf8Melbeck = new Checkbox( "18-43-10" );
-      lf8Melbeck.addItemListener( listener );
-      melbeckPanel.add( lf8Melbeck );
+//      Checkbox lf8Melbeck = new Checkbox( "18-43-10" );
+//      lf8Melbeck.addItemListener( listener );
+//      melbeckPanel.add( lf8Melbeck );
       this.mtwMelbeck = new Checkbox( "18-17-10" );
-      enableCheckBoxMTWMelbeck( false );
+      enableCheckBoxMTWMelbeck( true );
       this.mtwMelbeck.addItemListener( listener );
       melbeckPanel.add( this.mtwMelbeck );
+      melbeckPanel.add( new JLabel( " " ), "wrap 8" );
    }
 
    public JPanel getMelbeckPanel( ) {

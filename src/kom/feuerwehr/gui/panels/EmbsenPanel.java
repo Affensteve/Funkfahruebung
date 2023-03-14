@@ -29,7 +29,7 @@ public class EmbsenPanel {
       lfEmbsen.addItemListener( listener );
       embsenPanel.add( lfEmbsen );
       this.mtwEmbsen = new Checkbox( "18-17-30" );
-      this.mtwEmbsen.setEnabled( false );
+      this.mtwEmbsen.setEnabled( true );
       this.mtwEmbsen.addItemListener( listener );
       embsenPanel.add( this.mtwEmbsen );
       embsenPanel.add( new JLabel( " " ), "wrap 8" );
