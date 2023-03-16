@@ -332,7 +332,7 @@ public class Gui extends JFrame implements ItemListener {
       JLabel label_27 = new JLabel( "18-23-40" );
       label_27.setFont( new Font( "Tahoma", Font.PLAIN, 18 ) );
       tlfBarnstedtQueuePanel.add( label_27 );
-//      tlfBarnstedtQueuePanel.setVisible( false );
+      tlfBarnstedtQueuePanel.setVisible( false );
       vehiclePanel.add( tlfBarnstedtQueuePanel, "hidemode 3" );
 
 //      tsfBarnstedtQueuePanel = new JPanel();
@@ -595,6 +595,7 @@ public class Gui extends JFrame implements ItemListener {
          @Override
          public void actionPerformed( ActionEvent arg0 ) {
             String str = JOptionPane.showInputDialog( null, "Geben Sie die Ip-Adresse des Servers ein: ", "Funkfahrübung by ©S.Kunz\n", 1 );
+            System.out.println( "Try to connect to: " + str );
             if( str != null ) {
                setIPAdresse( str );
             }
@@ -1285,6 +1286,7 @@ public class Gui extends JFrame implements ItemListener {
     * @param aktuellerStand
     */
    public void setLabel( String koordinate, String bemerkung, String frage, String antwort, String auto, String rufname, int aktuellerStand ) {
+      System.out.println( "setLabel: rufname=" + rufname );
       if( lblKoordinaten.getText().startsWith( "ND" ) ) {
          lblKoordinaten.setToolTipText( "Nordpol Dora" );
       } else if( lblKoordinaten.getText().startsWith( "PE" ) ) {
@@ -1328,9 +1330,9 @@ public class Gui extends JFrame implements ItemListener {
          try {
             socketServer = new Socket( ipAdress, 13112 );
          } catch( UnknownHostException ex ) {
-            System.out.println( "UnknownHostException bei Verbindung zu Host 'localhost', Port 13112: " + ex.getMessage() );
+            System.out.println( "UnknownHostException bei Verbindung zu Host '" + ipAdress + "', Port 13112: " + ex.getMessage() );
          } catch( IOException ex ) {
-            System.out.println( "IOException bei Verbindung zu Host 'localhost', Port 13112: " + ex.getMessage() );
+            System.out.println( "IOException bei Verbindung zu Host '" + ipAdress + "', Port 13112: " + ex.getMessage() );
          }
       }
       btnSwitchConnection.setOnOff( !offlineArbeiten );
